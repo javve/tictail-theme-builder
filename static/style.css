@@ -112,30 +112,15 @@ header:after {
 .logotype {
     font-size: 56px;
     line-height: 64px;
-    font-weight: 100;
-    color: #fff;
-    letter-spacing: -2px;
-    text-transform: uppercase;
     float:left;
 }
 
 .logotype img {
     max-height:50px;
 }
-
-
-@media only screen and (max-width: 1024px) {
-    header {
-        padding-left:15px;
-        padding-right:15px;
-    }
+.burger {
+    display:none;
 }
-
-/* ******************************
-
-NAVIGATION
-
-****************************** */
 
 .navigation {
     float:right;
@@ -156,6 +141,9 @@ NAVIGATION
 }
 .navigation a {
     color:#464646;
+}
+.navigation a:hover {
+    color:#000;
 }
 .navigation .selected > a {
     color: #888;
@@ -184,12 +172,80 @@ NAVIGATION
 }
 
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 1024px) {
+    header {
+        padding-left:15px;
+        padding-right:15px;
+    }
     .navigation {
+        border-top:solid 1px #eee;
         clear: both;
         text-align: center;
         float: none;
         padding-top:10px;
+    }
+    .logotype {
+        margin-bottom:5px;
+    }
+}
+@media only screen and (max-width: 575px) {
+    header {
+        padding:8px;
+    }
+    .logotype {
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom:0;
+    }
+
+    .logotype img {
+        max-height:30px;
+    }
+    .full_navigation {
+        clear:both;
+        display:none;
+        padding-top:10px;
+    }
+    .navigation {
+        float:none;
+        text-align: left;
+    }
+    .navigation li {
+        display: block;
+        margin:0;
+    }
+    .navigation li a {
+        display: block;
+        padding:10px 10px;
+    }
+    .navigation .divider {
+        display: none;
+    }
+    .sub_navigation {
+        border-top: solid 1px #eee;
+        margin-top: 7px;
+    }
+    .search_container {
+        float: none;
+        margin-top:0;
+    }
+    #tictail_search input {
+        width:90%;
+    }
+    .burger {
+        display: block;
+        float: right;
+        height: 30px;
+        width: 30px;
+        padding-top: 4px;
+    }
+    .burger .line {
+        display: block;
+        background-color: #222;
+        height: 4px;
+        margin: 4px 0;
+        border-radius: 3px;
     }
 }
 

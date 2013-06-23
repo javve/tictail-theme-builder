@@ -38,54 +38,61 @@
             {{/no_logotype}}
         </a>
 
-
-        <div class="search_container">
-            {{{search}}}
+        <div class="burger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
         </div>
 
-        <nav class="navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{/has_children}}{{/is_current}}{{/navigation}}">
-            <ul class="main_navigation">
+        <div class="full_navigation">
+            <div class="search_container">
+                {{{search}}}
+            </div>
+
+            <nav class="navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{/has_children}}{{/is_current}}{{/navigation}}">
+                <ul class="main_navigation">
+                    {{#navigation}}
+                    <li class="navigation_item column {{#is_current}}selected{{/is_current}}">
+                        <a href="{{url}}">
+                            {{label}}
+                        </a>
+                    </li>
+                    {{/navigation}}
+
+                    <li class="divider">&bullet;</li>
+
+                    {{#store_blog_url}}
+                    <li class="store_link column">
+                        <a href="{{store_blog_url}}" target="_blank">
+                            {{#lang}}Blog{{/lang}}
+                        </a>
+                    </li>
+                    {{/store_blog_url}}
+
+                    <li class="store_link column {{#about_page}}selected{{/about_page}}">
+                        <a href="/about">
+                            {{#lang}}About{{/lang}}
+                        </a>
+                    </li>
+                </ul>
+
                 {{#navigation}}
-                <li class="navigation_item column {{#is_current}}selected{{/is_current}}">
-                    <a href="{{url}}">
-                        {{label}}
-                    </a>
-                </li>
+                    {{#is_current}}
+                        {{#has_children}}
+                            <ul class="sub_navigation">
+                                {{#children}}
+                                    <li {{#is_current}} class="selected"{{/is_current}}>
+                                        <a href="{{url}}">
+                                            {{label}}
+                                        </a>
+                                    </li>
+                                {{/children}}
+                            </ul>
+                        {{/has_children}}
+                    {{/is_current}}
                 {{/navigation}}
-
-                <li>&bullet;</li>
-
-                {{#store_blog_url}}
-                <li class="store_link column">
-                    <a href="{{store_blog_url}}" target="_blank">
-                        {{#lang}}Blog{{/lang}}
-                    </a>
-                </li>
-                {{/store_blog_url}}
-
-                <li class="store_link column {{#about_page}}selected{{/about_page}}">
-                    <a href="/about">
-                        {{#lang}}About{{/lang}}
-                    </a>
-                </li>
-            </ul>
-
-            {{#navigation}}
-                {{#is_current}}
-                    {{#has_children}}
-                        <ul class="sub_navigation">
-                            {{#children}}
-                                <li {{#is_current}} class="selected"{{/is_current}}>
-                                    <a href="{{url}}">
-                                        {{label}}
-                                    </a>
-                                </li>
-                            {{/children}}
-                        </ul>
-                    {{/has_children}}
-                {{/is_current}}
-            {{/navigation}}
-        </nav>
+            </nav>
+        </div>
     </div>
 </header>
 
@@ -127,6 +134,17 @@ $('.product_list').imagesLoaded(function() {
 
     rearrange();
     $(window).resize(rearrange);
+});
+
+var full_navigation = $('.full_navigation');
+$('header').click(function() {
+    if ($(window).width() < 575) {
+        if (full_navigation.is(':visible')) {
+            full_navigation.slideUp();
+        } else {
+            full_navigation.slideDown();
+        }
+    }
 });
 </script>
 
