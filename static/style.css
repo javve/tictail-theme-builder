@@ -369,19 +369,6 @@ footer {
     text-align: center;
 }
 
-footer .terms a {
-    margin: 0 10px;
-    font-size: 11px;
-    line-height: 16px;
-    color:#888;
-    color: rgba(255,255,255,0.4);
-    white-space: nowrap;
-}
-
-footer .terms a:hover {
-    color: #fff;
-}
-
 
 
 /* ******************************
@@ -732,6 +719,20 @@ PRODUCT PAGE
 
 .product_info .tictail_social_buttons {
     margin: 30px 0;
+}
+
+
+.product_info .terms a {
+    margin: 0 10px;
+    font-size: 11px;
+    line-height: 16px;
+    color:#888;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+}
+
+.product_info .terms a:hover {
+    color: #fff;
 }
 
 #related_products {
