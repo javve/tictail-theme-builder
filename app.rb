@@ -37,6 +37,23 @@ class App < Sinatra::Base
   get '/products/:category/:subcategory' do
     json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
+
+    @category = @store["original_navigation"].select{ |n| n["url"] == '/products/'+params[:category] + '/' + params[:subcategory] }[0]
+    @products = @store["products"].select{ |p| p["navigation_ids"].include? @category["id"] }
+    @store["navigation"].each do |nav|
+      if nav["url"] == '/products/'+params[:category]
+        nav["is_current"] = true
+        nav["children"].each do |subnav|
+          if subnav["url"] == '/products/'+params[:category] + '/' + params[:subcategory]
+            subnav["is_current"] = true
+          else
+            subnav["is_current"] = false
+          end
+        end
+      else
+        nav["is_current"] = false
+      end
+    end
     mustache :list_page
   end
 

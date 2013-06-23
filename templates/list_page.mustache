@@ -2,7 +2,7 @@
     {{#navigation}}
         {{#is_current}}
             {{#children}}
-                <a href="{{url}}">
+                <a href="{{url}}"{{#is_current}} class="selected" style="font-weight:bold;"{{/is_current}}>
                     {{label}}
                 </a>
             {{/children}}
