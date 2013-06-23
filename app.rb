@@ -18,12 +18,14 @@ class App < Sinatra::Base
   get '/' do
     json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
-    mustache :index
+    @products = @store["products"]
+    mustache :list_page
   end
 
   get '/about' do
     json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
+    @products = @store["products"]
     mustache :about_page
   end
 
