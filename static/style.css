@@ -50,7 +50,6 @@ p {
 .column {
     display: inline-block;
     vertical-align: top;
-    font-size: 14px;
     line-height: 1;
 
     /* Fix for Internet Explorer 7 */
@@ -116,37 +115,41 @@ NAVIGATION
 
 ****************************** */
 
-.main_navigation {
-    position: relative;
-    font-size: 0;
-    line-height: 0;
+.navigation {
     float:right;
+    padding: 23px 10px 0 0;
+    text-align: right;
     color:#ddd;
 }
-
-.main_navigation a {
-    color:#3e4e56;
+.navigation.got_subnavigation {
+    padding: 14px 10px 0 0;
 }
 
-.main_navigation ul {
-    padding: 16px 20px;
-    float:left;
-}
-
-.main_navigation li {
-    position: relative;
-    max-width: 400px;
-    margin: 8px 10px 0;
-    font-size: 17px;
-    line-height: 17px;
+.navigation li {
+    display: inline-block;
+    margin: 0 10px 0;
     font-weight: bold;
     text-overflow: ellipsis;
     white-space: nowrap;
-    float:left;
+}
+.navigation a {
+    color:#464646;
+}
+.navigation .selected > a {
+    color: #888;
 }
 
-.main_navigation .selected > a {
-    color: #888;
+.main_navigation {
+    font-size: 17px;
+    line-height: 17px;
+}
+
+.sub_navigation {
+    font-size:13px;
+    padding-top:7px;
+}
+.sub_navigation li {
+    margin: 0 10px 0;
 }
 
 .search_container {

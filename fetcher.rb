@@ -53,12 +53,15 @@ navigation.select!{ |item| item["parent_id"] == 0 }
 navigation.each do |item|
   item["children"] = []
   item["url"] = "/products/" << item["label"].to_url
+  item["is_current"] = false
 end
 
 subnav.each do |subitem|
   parent = navigation.select { |item| item["id"] == subitem["parent_id"] }[0]
   parent["children"] << subitem
+  parent["has_children"] = true
   subitem["url"] = parent["url"] + "/" + subitem["label"].to_url
+  subitem["is_current"] = false
 end
 
 products = agent.get('https://tictail.com/apiv2/rpc/v1/?jsonrpc={"jsonrpc":"2.0","method":"store.product.search","params":{"store_id":' + store_id + ',"published":false,"limit":17,"offset":0,"order_by":"position","descending":false},"id":null}').body

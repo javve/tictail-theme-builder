@@ -46,12 +46,8 @@ class App < Sinatra::Base
         nav["children"].each do |subnav|
           if subnav["url"] == '/products/'+params[:category] + '/' + params[:subcategory]
             subnav["is_current"] = true
-          else
-            subnav["is_current"] = false
           end
         end
-      else
-        nav["is_current"] = false
       end
     end
     mustache :list_page
