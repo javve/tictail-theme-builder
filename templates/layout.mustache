@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>
+        {{store_name}}
+        {{! Add the label of the current navigation item on list pages }}
+        {{#list_page}}{{#navigation}}{{#is_current}}- {{label}}{{/is_current}}{{/navigation}}{{/list_page}}
+        {{! Add the product title on product pages }}
+        {{#product_page}}{{#product}}- {{title}}{{/product}}{{/product_page}}
+        {{! Add "About" on the about page }}
+        {{#about_page}}- {{#lang}}About{{/lang}}{{/about_page}}
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="{{assets_url}}/771/css/anythingslider.css" rel="stylesheet" type="text/css">
+    <link href="{{assets_url}}/shared/css/base.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="/dropkick.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="{{assets_url}}/shared/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a class="logotype" href="{{store_url}}">
+            {{#logotype}}
+                <img src="{{url-300}}" alt="{{store_name}}">
+            {{/logotype}}
+            {{#no_logotype}}
+                {{store_name}}
+            {{/no_logotype}}
+        </a>
+
+        <nav id="main_navigation">
+            <ul class="row">
+                {{#navigation}}
+                <li class="navigation_item column {{#is_current}}selected{{/is_current}}">
+                    <a href="{{url}}">
+                        {{label}}
+                    </a>
+
+                    {{#children?}}
+                    <ul class="drop_down">
+                        {{#children}}
+                        <li>
+                            <a href="{{url}}">
+                                {{label}}
+                            </a>
+                        </li>
+                        {{/children}}
+                    </ul>
+                    {{/children?}}
+                </li>
+                {{/navigation}}
+
+                {{#store_blog_url}}
+                <li class="store_link column">
+                    <a href="{{store_blog_url}}" target="_blank">
+                        {{#lang}}Blog{{/lang}}
+                    </a>
+                </li>
+                {{/store_blog_url}}
+
+                <li class="store_link column {{#about_page}}selected{{/about_page}}">
+                    <a href="/about">
+                        {{#lang}}About{{/lang}}
+                    </a>
+                </li>
+            </ul>
+
+            <div class="search_container">
+                {{{search}}}
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    {{{yield}}}
+</div>
+
+<footer class="container">
+    <div class="terms">
+        {{#return_policy}}
+            {{#lang}}Return Policy{{/lang}}
+        {{/return_policy}}
+        {{#terms}}
+            {{#lang}}Terms &amp; Conditions{{/lang}}
+        {{/terms}}
+    </div>
+</footer>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{assets_url}}/771/jquery.dropkick-1.0.0.js"></script>
+<script>
+$('.tictail_variations_select').dropkick({
+    width: 160,
+    height: 30
+});
+</script>
+
+<script src="{{assets_url}}/shared/js/jquery.masonry.2.1.03.min.js"></script>
+<script>
+$('.product_list').imagesLoaded(function() {
+    var list = this,
+        rearrange = function() {
+            list.masonry({
+                itemSelector: '.column'
+            });
+        };
+
+    rearrange();
+    $(window).resize(rearrange);
+});
+</script>
+
+{{> tictail/misc}}
+
+</body>
+</html>
+
+<!--
+Want to create your own Tictail theme?
+Check out the documentation at https://tictail.com/docs
+-->

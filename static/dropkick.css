@@ -1,0 +1,173 @@
+/* ******************************
+
+DROPKICK STYLES
+
+****************************** */
+
+/***** Begin Theme ******/
+
+/* One container to bind them... */
+.dk_container {
+    background-color: #333;
+    background-color: rgba(0,0,0,0.2);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: normal;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+}
+.dk_container:focus {
+    outline: 0;
+}
+.dk_container a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Opens the dropdown and holds the menu label */
+.dk_toggle {
+    padding: 7px 45px 7px 10px;
+    background: url(http://dhskp7m6mg2zv.cloudfront.net/theme_assets/771/images/dropdownbutton.png) 100% 50% no-repeat;
+    border: 1px solid #000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: left;
+    border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.15) rgba(0,0,0,0.1);
+    text-shadow: 1px 1px rgba(0,0,0,.3);
+    width:auto !important;
+    display: block !important;
+}
+
+/* Applied when the dropdown is focused */
+.dk_focus .dk_toggle {
+}
+.dk_focus .dk_toggle {
+}
+
+/* Applied whenever the dropdown is open */
+.dk_open {
+    z-index: 10;
+}
+.dk_open .dk_toggle {
+    background-color: #333;
+    border-color: #000;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+
+/* The outer container of the options */
+.dk_options {
+    -webkit-box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
+    -moz-box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
+    box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+.dk_options a {
+    padding: 8px 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+    font-weight: bold;
+    color: #333;
+}
+.dk_options li:last-child a {
+    border-bottom: none;
+}
+.dk_options a:hover,
+.dk_option_current a {
+    background-color: #ddd;
+    border-bottom-color: #999;
+    color: #000;
+    text-decoration: none;
+}
+
+/* Inner container for options, this is what makes the scrollbar possible. */
+.dk_options_inner {
+    max-height: 250px;
+    border: 1px solid #8c8c8e;
+    border-bottom-width: 2px;
+    border-bottom-color: #999;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    color: #333;
+}
+
+/* Set a max-height on the options inner */
+.dk_options_inner,
+.dk_touch .dk_options {
+    max-height: 250px;
+}
+
+/******  End Theme ******/
+
+/***** Critical to the continued enjoyment of working dropdowns ******/
+
+.dk_container {
+    display: none;
+    /*float: left;*/
+    position: relative;
+}
+.dk_container a {
+    outline: 0;
+}
+
+.dk_toggle {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    zoom: 1;
+}
+
+.dk_open {
+    position: relative;
+}
+.dk_open .dk_options {
+    display: block;
+}
+.dk_open .dk_label {
+    color: inherit;
+}
+
+.dk_options {
+    display: none;
+    margin-top: -1px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+.dk_options a,
+.dk_options a:link,
+.dk_options a:visited {
+    display: block;
+}
+.dk_options_inner {
+    overflow: auto;
+    position: relative;
+}
+
+.dk_touch .dk_options {
+    overflow: hidden;
+}
+
+.dk_touch .dk_options_inner {
+    max-height: none;
+    overflow: visible;
+}
+
+.dk_fouc select {
+    position: relative;
+    top: -99999em;
+    visibility: hidden;
+}
+
+/***** End Critical to the continued enjoyment of working dropdowns ******/

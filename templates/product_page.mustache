@@ -1,0 +1,93 @@
+{{#product_page}}
+
+    <article id="product" itemscope itemtype="http://schema.org/Product">
+        {{#product}}
+        <div id="product_info" class="row">
+            <figure class="image_container column">
+                {{#slideshow-500}}{{/slideshow-500}}
+
+                <figcaption>{{#lang}}Click on image to view full size{{/lang}}</figcaption>
+            </figure>
+
+            <section class="details_container column">
+                <div class="inner_container">
+                    <h1 itemprop="name">{{title}}</h1>
+
+                    <div class="description html_content" itemprop="description">
+                        {{description}}
+                    </div>
+
+                    {{{social_buttons}}}
+                </div>
+            </section>
+
+            <section class="buy_container column">
+                <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <span itemprop="price">{{{price_with_currency}}}</span>
+
+                    {{! This is meta data for search engines etc. }}
+                    <meta itemprop="priceCurrency" content="{{currency_code}}">
+                    {{#in_stock}}
+                    <link itemprop="availability" href="http://schema.org/InStock">
+                    {{/in_stock}}
+                    {{#out_of_stock}}
+                    <link itemprop="availability" href="http://schema.org/OutOfStock">
+                    {{/out_of_stock}}
+                </div>
+
+                {{! The #add_to_cart block is only rendered if the product is in stock }}
+                {{#add_to_cart}}
+                    <div class="variations_container">
+                        {{#variations_select}}{{/variations_select}}
+                    </div>
+                    <div class="add_to_cart">
+                        {{#add_to_cart_button}}
+                            {{#lang}}Add to cart{{/lang}}
+                        {{/add_to_cart_button}}
+                    </div>
+                {{/add_to_cart}}
+
+                {{! This block will be rendered instead of the #add_to_cart block when the product is out of stock }}
+                {{#out_of_stock}}
+                <div class="out_of_stock">
+                    {{#lang}}This product is out of stock{{/lang}}
+                </div>
+                {{/out_of_stock}}
+            </section>
+        </div>
+        {{/product}}
+
+        {{! Render a list of related products if there are any }}
+        {{#related_products?}}
+        <aside id="related_products">
+            <h2>{{#lang}}You might also like...{{/lang}}</h2>
+
+            <ul class="product_list row">
+                {{#related_products}}
+                <li class="column">
+                    <a href="{{url}}">
+                        <div class="image_container">
+                            {{#primary_image}}
+                            <img src="{{url-300}}" alt="{{title}}">
+                            <div class="overlay">
+                                <div class="badge">{{#lang}}Go to product page{{/lang}}</div>
+                            </div>
+                            {{/primary_image}}
+                        </div>
+
+                        <h3>{{title}}</h3>
+                        {{#in_stock}}
+                        <span class="price">{{price_with_currency}}</span>
+                        {{/in_stock}}
+                        {{#out_of_stock}}
+                        <span class="price out_of_stock">{{#lang}}Out of stock{{/lang}}</span>
+                        {{/out_of_stock}}
+                    </a>
+                </li>
+                {{/related_products}}
+            </ul>
+        </aside>
+        {{/related_products?}}
+    </article>
+
+{{/product_page}}
