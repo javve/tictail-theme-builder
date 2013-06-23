@@ -123,6 +123,14 @@ header:after {
     max-height:50px;
 }
 
+
+@media only screen and (max-width: 1024px) {
+    header {
+        padding-left:15px;
+        padding-right:15px;
+    }
+}
+
 /* ******************************
 
 NAVIGATION
@@ -169,10 +177,20 @@ NAVIGATION
 .search_container {
     position: relative;
     float:right;
-    margin: 15px 10px 0;
+    margin: 15px 0 0;
     vertical-align: top;
     font-size: 14px;
     line-height: 17px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .navigation {
+        clear: both;
+        text-align: center;
+        float: none;
+        padding-top:10px;
+    }
 }
 
 /* ******************************
@@ -291,18 +309,8 @@ FOOTER
 footer {
     position: relative;
     clear: both;
-    margin: 30px auto;
-    padding-top: 15px;
+    margin: 0 auto;
     text-align: center;
-}
-
-footer:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
 }
 
 footer .terms a {
@@ -547,6 +555,14 @@ LIST PAGE
         margin: 8px 0 4px;
         font-size: 12px;
         line-height: 15px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .product_list li,
+    .product_list .image_container,
+    .product_list .image_container img {
+        width: 100%;
     }
 }
 
