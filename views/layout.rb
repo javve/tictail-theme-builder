@@ -60,11 +60,15 @@ class App
       end
 
       def return_policy
-        { lang: '<a class="tictail_return-policy fullscreen fullscreen_iframe" href="/dashboard/store/jonnyaction/themes/preview/771/legal/return-policy">Return Policy</a>' }
+        lambda do |text|
+          "<a class='tictail_return-policy fullscreen fullscreen_iframe' href='/dashboard/store/jonnyaction/themes/preview/771/legal/return-policy'>"+text+"</a>"
+        end
       end
 
       def terms
-        { lang: "<a class='tictail_terms fullscreen fullscreen_iframe' href='/dashboard/store/jonnyaction/themes/preview/771/legal/terms'>Terms &amp; Conditions</a>" }
+        lambda do |text|
+          "<a class='tictail_terms fullscreen fullscreen_iframe' href='/dashboard/store/jonnyaction/themes/preview/771/legal/terms'>"+text+"</a>"
+        end
       end
 
       ######################################
