@@ -1,4 +1,14 @@
 {{#list_page}}
+    {{#navigation}}
+        {{#is_current}}
+            {{#children}}
+                <a href="{{url}}">
+                    {{label}}
+                </a>
+            {{/children}}
+        {{/is_current}}
+    {{/navigation}}
+
     <section id="products">
         <ul class="product_list row">
             {{#products}}
@@ -7,9 +17,7 @@
                     <div class="image_container">
                         {{#primary_image}}
                         <img src="{{url-300}}" alt="{{title}}">
-                        <div class="overlay">
-                            <div class="badge">{{#lang}}Go to product page{{/lang}}</div>
-                        </div>
+                        <div class="overlay"></div>
                         {{/primary_image}}
                     </div>
 

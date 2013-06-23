@@ -45,6 +45,11 @@ class App < Sinatra::Base
     @store = JSON.parse(json)
     @category = @store["original_navigation"].select{ |n| n["url"] == '/products/'+params[:category] }[0]
     @products = @store["products"].select{ |p| p["navigation_ids"].include? @category["id"] }
+    @store["navigation"].each do |nav|
+      if nav["url"] == '/products/'+params[:category]
+        nav["is_current"] = true
+      end
+    end
     mustache :list_page
   end
 
