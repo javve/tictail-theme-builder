@@ -129,7 +129,7 @@ $('.product_list').imagesLoaded(function() {
 });
 
 var full_navigation = $('.full_navigation');
-$('header').click(function() {
+$('header .burger').click(function() {
     if ($(window).width() < 575) {
         if (full_navigation.is(':visible')) {
             full_navigation.slideUp();

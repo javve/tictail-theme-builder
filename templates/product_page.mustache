@@ -13,7 +13,7 @@
                     <h1 itemprop="name">{{title}}</h1>
 
                     <div class="description html_content" itemprop="description">
-                        {{description}}
+                        {{{description}}}
                     </div>
 
                     {{{social_buttons}}}
@@ -69,6 +69,8 @@
         {{! Render a list of related products if there are any }}
         {{#related_products?}}
         <aside id="related_products">
+            <hr>
+
             <h2>{{#lang}}You might also like...{{/lang}}</h2>
 
             <ul class="product_list row">
@@ -78,15 +80,13 @@
                         <div class="image_container">
                             {{#primary_image}}
                             <img src="{{url-300}}" alt="{{title}}">
-                            <div class="overlay">
-                                <div class="badge">{{#lang}}Go to product page{{/lang}}</div>
-                            </div>
+                            <div class="overlay"></div>
                             {{/primary_image}}
                         </div>
 
-                        <h3>{{title}}</h3>
+                        <h2>{{title}}</h2>
                         {{#in_stock}}
-                        <span class="price">{{price_with_currency}}</span>
+                        <span class="price">{{{price_with_currency}}}</span>
                         {{/in_stock}}
                         {{#out_of_stock}}
                         <span class="price out_of_stock">{{#lang}}Out of stock{{/lang}}</span>

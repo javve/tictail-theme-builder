@@ -210,6 +210,7 @@ header:after {
     .navigation {
         float:none;
         text-align: left;
+        border-top:none;
     }
     .navigation li {
         display: block;
@@ -363,10 +364,18 @@ FOOTER
 ****************************** */
 
 footer {
-    position: relative;
     clear: both;
     margin: 0 auto;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        height:40px;
+    }
+    footer hr {
+        display:none;
+    }
 }
 
 
@@ -568,7 +577,7 @@ LIST PAGE
 
 @media only screen and (min-width: 1160px) {
     .product_list {
-        margin: 0 -10px -20px;
+        margin: 0 -20px -20px;
     }
 }
 
@@ -654,7 +663,7 @@ PRODUCT PAGE
 }
 
 .product_info .details_container .inner_container {
-    padding: 0 12%;
+    padding: 0 20px;
 }
 
 .product_info h1 {
@@ -665,8 +674,6 @@ PRODUCT PAGE
 .product_info .description a:hover {
     color: #888;
 }
-
-
 
 .product_info .buy_container {
     width:20%;
@@ -713,8 +720,8 @@ PRODUCT PAGE
 
 .product_info .out_of_stock {
     margin: 20px 0;
-    font-style: italic;
-    color: #f22f2f;
+    color: #777;
+    font-weight: bold;
 }
 
 .product_info .tictail_social_buttons {
@@ -735,37 +742,10 @@ PRODUCT PAGE
     color: #fff;
 }
 
-#related_products {
-    position: relative;
-    margin: 40px 0 20px;
-    padding-top: 20px;
-    border-top: 1px solid #030202;
-}
-
-#related_products:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #2f2c2c;
-}
-
-#related_products h2 {
-    margin: 0 10px 10px;
-    color: #777;
-}
-
 @media only screen and (max-width: 1024px) {
 
     .product_info {
-        margin: 0 6%;
-    }
-
-    #related_products h2 {
-        margin: 0 0 10px;
+        margin: 0 20px;
     }
 }
 
@@ -799,6 +779,11 @@ PRODUCT PAGE
         display: inline-block !important;
         width:250px !important;
     }
+
+    #related_products h2 {
+        margin: 0 0 20px;
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 320px) {
@@ -811,12 +796,6 @@ PRODUCT PAGE
     }
 
     .product_info .price {
-    }
-
-    #related_products h2 {
-        margin: 0 0 20px;
-        color: #fff;
-        text-align: center;
     }
 }
 
