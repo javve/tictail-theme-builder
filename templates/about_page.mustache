@@ -6,31 +6,4 @@
             {{{store_description}}}
         </div>
     </article>
-
-    <hr>
-
-    <section id="products">
-        <ul class="product_list row">
-            {{#products}}
-            <li class="column">
-                <a href="{{url}}">
-                    <div class="image_container">
-                        {{#primary_image}}
-                        <img src="{{url-300}}" alt="{{title}}">
-                        <div class="overlay"></div>
-                        {{/primary_image}}
-                    </div>
-
-                    <h2>{{title}}</h2>
-                    {{#in_stock}}
-                    <span class="price">{{{price_with_currency}}}</span>
-                    {{/in_stock}}
-                    {{#out_of_stock}}
-                    <span class="price out_of_stock">{{#lang}}Out of stock{{/lang}}</span>
-                    {{/out_of_stock}}
-                </a>
-            </li>
-            {{/products}}
-        </ul>
-    </section>
 {{/about_page}}
