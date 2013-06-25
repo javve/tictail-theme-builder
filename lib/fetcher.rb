@@ -5,10 +5,10 @@ require 'rubygems'
 require 'mechanize'
 require 'json'
 require 'stringex'
-require './tictail_api'
+require './lib/tictail_api'
 
 if (ARGV.length != 2)
-  puts "Script usage: ruby fetcer.rb <tictail-email> <tictail-password>"
+  puts "Script usage: ruby lib/fetcer.rb <tictail-email> <tictail-password>"
   exit
 end
 
@@ -19,6 +19,10 @@ class Fetcher
     @agent = Mechanize.new
 
     page = sign_in(email, password)
+    if (page.title() == "Tictail - Log in")
+      puts "Error. Could not log in. Wrong email or password? <3"
+      exit
+    end
     @store_id = get_store_id(page)
     @store = get_store_data(page)
 

@@ -16,28 +16,28 @@ class App < Sinatra::Base
 
 
   get '/' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @products = @store["products"]
     mustache :list_page
   end
 
   get '/about' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @products = @store["products"]
     mustache :about_page
   end
 
   get '/product/:permalink' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @product = @store["products"].select { |q| q["url"] == "/product/"+params[:permalink] }[0]
     mustache :product_page
   end
 
   get '/products/:category/:subcategory' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
 
     @category = @store["original_navigation"].select{ |n| n["url"] == '/products/'+params[:category] + '/' + params[:subcategory] }[0]
@@ -56,7 +56,7 @@ class App < Sinatra::Base
   end
 
   get '/products/:category' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @category = @store["original_navigation"].select{ |n| n["url"] == '/products/'+params[:category] }[0]
     @products = @store["products"].select{ |p| p["navigation_ids"].include? @category["id"] }
@@ -69,7 +69,7 @@ class App < Sinatra::Base
   end
 
   get '/products' do
-    json = File.read("lib/store.json").force_encoding('UTF-8')
+    json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @products = @store["products"]
     mustache :list_page

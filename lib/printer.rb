@@ -1,24 +1,24 @@
 class Printer
     def initialize
-        about_page = File.read("../templates/about_page.mustache")
+        about_page = File.read("./templates/about_page.mustache")
         about_page = about_page.sub(/\{\{\{price_with_currency\}\}\}/, '{{price_with_currency}}')
         about_page = about_page.sub(/\{\{\{store_description\}\}\}/, '{{store_description}}')
 
-        layout = File.read("../templates/layout.mustache")
+        layout = File.read("./templates/layout.mustache")
         layout = layout.sub(/\{\{\{search\}\}\}/, '{{search}}')
 
-        list_page = File.read("../templates/list_page.mustache")
+        list_page = File.read("./templates/list_page.mustache")
         list_page = list_page.sub(/\{\{\{price_with_currency\}\}\}/, '{{price_with_currency}}')
 
-        product_page = File.read("../templates/product_page.mustache")
+        product_page = File.read("./templates/product_page.mustache")
         product_page = product_page.sub(/\{\{\{social_buttons\}\}\}/, '{{social_buttons}}')
         product_page = product_page.sub(/\{\{\{price_with_currency\}\}\}/, '{{price_with_currency}}')
         product_page = product_page.sub(/\{\{\{description\}\}\}/, '{{description}}')
 
-        css = File.read("../static/style.css")
-        css += File.read("../static/dropkick.css")
+        css = File.read("./static/style.css")
+        css += File.read("./static/dropkick.css")
 
-        tictail_misc = File.read("../templates/tictail/misc.mustache")
+        tictail_misc = File.read("./templates/tictail/misc.mustache")
 
         layout = layout.sub(/\<link href=\"\/dropkick\.css\" rel=\"stylesheet\" type=\"text\/css\"\>/, '')
         layout = layout.sub(/\<link href=\"\/style\.css\" rel=\"stylesheet\" type=\"text\/css\"\>/, '<style type="text/css">'+css+'</style>')
