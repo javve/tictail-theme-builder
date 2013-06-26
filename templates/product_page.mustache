@@ -76,7 +76,7 @@
             <ul class="product_list row">
                 {{#related_products}}
                 <li class="column">
-                    <a href="{{url}}">
+                    <a href="{{url}}" {{#out_of_stock}}class="out_of_stock"{{/out_of_stock}}>
                         <div class="image_container">
                             {{#primary_image}}
                             <img src="{{url-300}}" alt="{{title}}">
@@ -89,7 +89,7 @@
                         <span class="price">{{{price_with_currency}}}</span>
                         {{/in_stock}}
                         {{#out_of_stock}}
-                        <span class="price out_of_stock">{{#lang}}Out of stock{{/lang}}</span>
+                        <span class="price out_of_stock_price">{{#lang}}Out of stock{{/lang}}</span>
                         {{/out_of_stock}}
                     </a>
                 </li>
