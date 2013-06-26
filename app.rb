@@ -1,10 +1,10 @@
-require 'sinatra/base'
+require 'bundler/setup'
+require 'sinatra'
 require 'mustache/sinatra'
 require 'json'
 
 class App < Sinatra::Base
   register Mustache::Sinatra
-
 
   require 'views/layout'
 
