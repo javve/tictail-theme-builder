@@ -56,7 +56,7 @@ templates, etc.
 
 4. Spin up a server with [Rack](http://rack.rubyforge.org/doc/) support (ex. [Shotgun](https://github.com/rtomayko/shotgun) or [Pow](http://pow.cx/)).
   ```
-  $ shotgun app.rb
+  $ shotgun config.ru
   == Shotgun/Thin on http://127.0.0.1:9393/
   >> Thin web server (v1.3.1 codename Triple Espresso)
   >> Maximum connections set to 1024
