@@ -7,18 +7,18 @@
                 <a href="{{url}}" {{#out_of_stock}}class="out_of_stock"{{/out_of_stock}}>
                     <div class="image_container">
                         {{#primary_image}}
-                        <img src="{{url-300}}" alt="{{title}}">
-                        <div class="overlay"></div>
+                            <img src="{{url-500}}" alt="{{title}}">
                         {{/primary_image}}
                     </div>
-
-                    <h2>{{title}}</h2>
-                    {{#in_stock}}
-                    <span class="price">{{{price_with_currency}}}</span>
-                    {{/in_stock}}
-                    {{#out_of_stock}}
-                    <span class="price out_of_stock_price">{{#lang}}Out of stock{{/lang}}</span>
-                    {{/out_of_stock}}
+                    <div class="info">
+                        <h2>{{title}}</h2>
+                        {{#in_stock}}
+                        <h4 class="price">{{{price_with_currency}}}</h4>
+                        {{/in_stock}}
+                        {{#out_of_stock}}
+                        <h4 class="price out_of_stock_price">{{#lang}}Out of stock{{/lang}}</h4>
+                        {{/out_of_stock}}
+                    </div>
                 </a>
             </li>
             {{/products}}
