@@ -6,6 +6,7 @@ class Printer
 
         layout = File.read("./templates/layout.mustache")
         layout = layout.sub(/\{\{\{search\}\}\}/, '{{search}}')
+        layout = layout.sub(/\<script id=\"theme-builder\" src=\"\/theme-builder.js\"\>\<\/script\>/, '')
 
         list_page = File.read("./templates/list_page.mustache")
         list_page = list_page.sub(/\{\{\{price_with_currency\}\}\}/, '{{price_with_currency}}')
