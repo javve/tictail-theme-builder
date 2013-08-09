@@ -8,16 +8,9 @@ DROPKICK STYLES
 
 /* One container to bind them... */
 .dk_container {
-    background-color: #333;
-    background-color: rgba(0,0,0,0.2);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
-    font-size: 12px;
-    line-height: 22px;
-    font-weight: normal;
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+    margin: 0 10px 0 0;
+    font-weight: bold;
+    float:left;
 }
 .dk_container:focus {
     outline: 0;
@@ -29,18 +22,15 @@ DROPKICK STYLES
 
 /* Opens the dropdown and holds the menu label */
 .dk_toggle {
-    padding: 7px 45px 7px 10px;
-    background: url(http://dhskp7m6mg2zv.cloudfront.net/theme_assets/771/images/dropdownbutton.png) 100% 50% no-repeat;
-    border: 1px solid #000;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    color: #fff;
-    text-align: left;
-    border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.15) rgba(0,0,0,0.1);
-    text-shadow: 1px 1px rgba(0,0,0,.3);
+    padding: 12px 20px;
+    background-color:transparent;
+    border: solid 3px #222;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    line-height: normal;
     width:auto !important;
-    display: block !important;
+    display: inline-block !important;
 }
 
 /* Applied when the dropdown is focused */
@@ -54,12 +44,9 @@ DROPKICK STYLES
     z-index: 10;
 }
 .dk_open .dk_toggle {
-    background-color: #333;
-    border-color: #000;
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0;
-    color: #fff;
+    -webkit-border-radius: 25px 25px 0 0;
+    -moz-border-radius: 25px 25px 0 0;
+    border-radius: 25px 25px 0 0;
 }
 
 /* The outer container of the options */
@@ -72,10 +59,9 @@ DROPKICK STYLES
     border-radius: 0 0 5px 5px;
 }
 .dk_options a {
-    padding: 8px 10px;
+    padding: 8px 59px 8px 20px;
     background-color: #fff;
-    border-bottom: 1px solid #bbb;
-    font-weight: bold;
+    border-bottom: 1px solid #ddd;
     color: #333;
 }
 .dk_options li:last-child a {
@@ -83,8 +69,7 @@ DROPKICK STYLES
 }
 .dk_options a:hover,
 .dk_option_current a {
-    background-color: #ddd;
-    border-bottom-color: #999;
+    background-color: #f6f6f6;
     color: #000;
     text-decoration: none;
 }
@@ -92,13 +77,12 @@ DROPKICK STYLES
 /* Inner container for options, this is what makes the scrollbar possible. */
 .dk_options_inner {
     max-height: 250px;
-    border: 1px solid #8c8c8e;
-    border-bottom-width: 2px;
-    border-bottom-color: #999;
+    border: 3px solid #222;
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
-    color: #333;
+    color: #222;
+    font-weight: normal;
 }
 
 /* Set a max-height on the options inner */
@@ -140,10 +124,10 @@ DROPKICK STYLES
 
 .dk_options {
     display: none;
-    margin-top: -1px;
+    margin-top: -2px;
     position: absolute;
-    right: 0;
-    width: 100%;
+    left: 0;
+    width: auto;
 }
 .dk_options a,
 .dk_options a:link,

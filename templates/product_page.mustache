@@ -2,13 +2,13 @@
     <article id="product" itemscope itemtype="http://schema.org/Product">
         {{#product}}
         <div class="product_info" class="row">
-            <figure class="image_container column">
+            <figure class="image_container">
                 {{#slideshow-500}}{{/slideshow-500}}
 
                 <figcaption>{{#lang}}Click on image to view full size{{/lang}}</figcaption>
             </figure>
 
-            <section class="details_container column">
+            <section class="details_container">
                 <div class="inner_container">
                     <h1 itemprop="name">{{title}}</h1>
 
@@ -17,50 +17,48 @@
                     </div>
 
                     {{{social_buttons}}}
-                </div>
-            </section>
 
-            <section class="buy_container column">
-                <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <span itemprop="price">{{{price_with_currency}}}</span>
+                    <div style="display:none;" class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price">{{{price_with_currency}}}</span>
 
-                    {{! This is meta data for search engines etc. }}
-                    <meta itemprop="priceCurrency" content="{{currency_code}}">
-                    {{#in_stock}}
-                    <link itemprop="availability" href="http://schema.org/InStock">
-                    {{/in_stock}}
+                        {{! This is meta data for search engines etc. }}
+                        <meta itemprop="priceCurrency" content="{{currency_code}}">
+                        {{#in_stock}}
+                        <link itemprop="availability" href="http://schema.org/InStock">
+                        {{/in_stock}}
+                        {{#out_of_stock}}
+                        <link itemprop="availability" href="http://schema.org/OutOfStock">
+                        {{/out_of_stock}}
+                    </div>
+
+                    {{! The #add_to_cart block is only rendered if the product is in stock }}
+                    {{#add_to_cart}}
+                        <div class="variations_container">
+                            {{#variations_select}}{{/variations_select}}
+                        </div>
+                        <div class="add_to_cart">
+                            {{#add_to_cart_button}}
+                                {{#lang}}<i class="icon-shopping-cart"></i> Add to cart{{/lang}}
+                            {{/add_to_cart_button}}
+                        </div>
+                    {{/add_to_cart}}
+
+                    {{! This block will be rendered instead of the #add_to_cart block when the product is out of stock }}
                     {{#out_of_stock}}
-                    <link itemprop="availability" href="http://schema.org/OutOfStock">
+                    <div class="out_of_stock">
+                        {{#lang}}This product is out of stock{{/lang}}
+                    </div>
                     {{/out_of_stock}}
-                </div>
 
-                {{! The #add_to_cart block is only rendered if the product is in stock }}
-                {{#add_to_cart}}
-                    <div class="variations_container">
-                        {{#variations_select}}{{/variations_select}}
+                    <div class="terms">
+                        {{#return_policy}}
+                            {{#lang}}Return Policy{{/lang}}
+                        {{/return_policy}}
+                        &nbsp; &nbsp;
+                        {{#terms}}
+                            {{#lang}}Terms &amp; Conditions{{/lang}}
+                        {{/terms}}
                     </div>
-                    <div class="add_to_cart">
-                        {{#add_to_cart_button}}
-                            {{#lang}}Add to cart{{/lang}}
-                        {{/add_to_cart_button}}
-                    </div>
-                {{/add_to_cart}}
-
-                {{! This block will be rendered instead of the #add_to_cart block when the product is out of stock }}
-                {{#out_of_stock}}
-                <div class="out_of_stock">
-                    {{#lang}}This product is out of stock{{/lang}}
-                </div>
-                {{/out_of_stock}}
-
-                <div class="terms">
-                    {{#return_policy}}
-                        {{#lang}}Return Policy{{/lang}}
-                    {{/return_policy}}
-                    &nbsp;
-                    {{#terms}}
-                        {{#lang}}Terms &amp; Conditions{{/lang}}
-                    {{/terms}}
                 </div>
             </section>
         </div>

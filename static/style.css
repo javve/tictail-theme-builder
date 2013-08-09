@@ -586,6 +586,7 @@ PRODUCT PAGE
 .product_info .image_container {
     width: 40%;
     text-align: center;
+    float:left;
 }
 
 .product_info .image_container .tictail_slideshow {
@@ -612,11 +613,12 @@ PRODUCT PAGE
 }
 
 .product_info .details_container {
-    width: 38.9%;
+    width: 60%;
+    float:left;
 }
 
 .product_info .details_container .inner_container {
-    padding: 0 20px;
+    padding: 0 0 0 40px;
 }
 
 .product_info .description a:hover {
@@ -639,14 +641,42 @@ PRODUCT PAGE
     text-decoration: underline;
 }
 
-.product_info .variations_container {
-    /*min-height: 38px;
-    margin: 10px 0;*/
+.product_info .variations_container .dk_toggle .dk_label {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    margin-top: 0;
+
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+}
+.product_info .variations_container .dk_toggle .dk_label:before {
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
+    content: "\f0ca";
+    margin-right:5px;
+}
+.product_info .variations_container .dk_toggle .dk_label:after {
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
+    content: "\f0dd";
+    margin-left:5px;
+    position: relative;
+    top: -4px;
 }
 
 .product_info .add_to_cart {
-    clear: both;
-    margin: 20px 0;
+    float:left;
 }
 
 .product_info .out_of_stock {
@@ -659,10 +689,13 @@ PRODUCT PAGE
     margin: 30px 0;
 }
 
-
+.product_info .terms {
+    clear:both;
+    font-size: 13px;
+    font-weight: bold;
+    padding-top:15px;
+}
 .product_info .terms a {
-    font-size: 11px;
-    line-height: 16px;
     white-space: nowrap;
 }
 
@@ -734,7 +767,7 @@ PRODUCT PAGE
 .tictail_add_to_cart_button {
     min-width: 128px;
     margin: 0;
-    padding: 12px 10px;
+    padding: 12px 20px;
     background-color:transparent;
     border: solid 3px #222;
     -webkit-border-radius: 25px;
@@ -743,8 +776,8 @@ PRODUCT PAGE
     cursor: pointer;
     color:#222;
     font-weight: bold;
-    width:100%;
     font-size: inherit;
+    display:inline-block;
 }
 
 .tictail_add_to_cart_button:hover {
