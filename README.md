@@ -54,13 +54,12 @@ templates, etc.
   # ex: ruby lib/fetcher javve@coolemail.com supersecret
   ```
 
-4. Spin up a server with [Rack](http://rack.rubyforge.org/doc/) support (ex. [Shotgun](https://github.com/rtomayko/shotgun) or [Pow](http://pow.cx/)).
+4. Spin up a server with [Rack](http://rack.rubyforge.org/doc/).
   ```
-  $ shotgun config.ru
-  == Shotgun/Thin on http://127.0.0.1:9393/
-  >> Thin web server (v1.3.1 codename Triple Espresso)
-  >> Maximum connections set to 1024
-  >> Listening on 127.0.0.1:9393, CTRL+C to stop
+  $ rackup config.ru
+  [2013-08-09 12:29:48] INFO  WEBrick 1.3.1
+  [2013-08-09 12:29:48] INFO  ruby 1.9.3 (2012-02-16) [x86_64-darwin12.2.0]
+  [2013-08-09 12:29:48] INFO  WEBrick::HTTPServer#start: pid=7101 port=9292
   ```
 5. Build you theme by changing the files in `/templates`
 6. When you are ready to test your theme at Tictail.com just write this command in the terminal:
