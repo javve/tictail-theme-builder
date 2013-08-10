@@ -19,6 +19,7 @@ class App < Sinatra::Base
     json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @products = @store["products"]
+    @on_index = true
     mustache :list_page
   end
 

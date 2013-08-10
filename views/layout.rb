@@ -10,6 +10,10 @@ class App
         @store
       end
 
+      def on_index
+        @on_index || false
+      end
+
       ######################################
       # Store Info
       ######################################
@@ -157,7 +161,6 @@ class App
 
       def list_page
         {
-          on_index: true,
           current_navigation: [],
           products: []
         }
