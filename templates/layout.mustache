@@ -39,9 +39,9 @@
 
         <nav class="main_navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{#children}}{{#is_current}} child_active{{/is_current}}{{/children}}{{/has_children}}{{/is_current}}{{/navigation}}">
             <ul class="container">
-                <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+                <li class="navigation_item {{#on_index}}selected{{/on_index}}">
                     <a href="/">
-                        <i class="icon-th"></i> &nbsp;All items
+                        <i class="icon-th"></i> &nbsp;{{#lang}}All items{{/lang}}
                     </a>
                 </li>
                 {{#navigation}}
@@ -92,9 +92,9 @@
         {{#logotype}}
             <img src="{{url-300}}" alt="{{store_name}}">
         {{/logotype}}
-        {{#no_logotype}}
+        <span class="store_name">
             {{store_name}}
-        {{/no_logotype}}
+        </span>
     </a>
 </header>
 
