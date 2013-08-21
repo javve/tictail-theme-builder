@@ -52,17 +52,23 @@
                 </li>
                 {{/navigation}}
 
+                <li class="store_link {{#about_page}}selected{{/about_page}}">
+                    <a href="/about">
+                        <i class="icon-info-sign"></i> &nbsp;{{#lang}}About{{/lang}}
+                    </a>
+                </li>
+
                 {{#store_blog_url}}
                 <li class="store_link">
                     <a href="{{store_blog_url}}" target="_blank">
-                        <i class="icon-rss"></i> &nbsp;{{#lang}}Blog{{/lang}}
+                        <i class="icon-globe"></i> &nbsp;{{#lang}}Blog{{/lang}}
                     </a>
                 </li>
                 {{/store_blog_url}}
 
-                <li class="store_link {{#about_page}}selected{{/about_page}}">
-                    <a href="/about">
-                        <i class="icon-info"></i> &nbsp;{{#lang}}About{{/lang}}
+                <li>
+                    <a href="#" id="search-trigger">
+                        <i class="icon-search"></i>
                     </a>
                 </li>
             </ul>
@@ -88,6 +94,7 @@
 
     </div>
 
+
     <a class="logotype" href="{{store_url}}">
         {{#logotype}}
             <img src="{{url-300}}" alt="{{store_name}}">
@@ -99,7 +106,12 @@
 </header>
 
 <div class="container">
-    {{{yield}}}
+    <div id="search_container">
+        {{{search}}}
+    </div>
+    <div class="content_container">
+        {{{yield}}}
+    </div>
 </div>
 
 
@@ -114,16 +126,22 @@ $('.tictail_variations_select').dropkick({
 
 <script src="{{assets_url}}/shared/js/jquery.masonry.2.1.03.min.js"></script>
 <script>
-$('.product_list').imagesLoaded(function() {
-    var list = this,
-        rearrange = function() {
-            list.masonry({
-                itemSelector: '.column'
-            });
-        };
 
-    rearrange();
-    $(window).resize(rearrange);
+function generateMasonry(container) {
+    container.imagesLoaded(function() {
+        var list = this,
+            rearrange = function() {
+                list.masonry({
+                    itemSelector: 'li'
+                });
+            };
+        rearrange();
+    });
+}
+
+generateMasonry($('.product_list'));
+$(window).resize(function() {
+    generateMasonry($('.product_list'));
 });
 
 var full_navigation = $('.full_navigation');
@@ -136,6 +154,78 @@ $('header .burger').click(function() {
         }
     }
 });
+
+(function SearchBoxWatcher() {
+
+    var oldItemCount = 0,
+        timeoutCount = 0,
+        searchHackTimeout = null,
+        searchResults,
+        searchBox = $('#tictail_search_box'),
+        contentContainer = $('.content_container'),
+        searchContainer = $('#search_container');
+
+    var init = function() {
+        searchBox.keyup(watch);
+        searchContainer.hide();
+        $('#search-trigger').click(function() {
+            if (searchContainer.is(':hidden')) {
+                searchContainer.slideDown();
+            } else {
+                searchContainer.slideUp();
+            }
+        });
+    };
+
+    var watch = function() {
+        clearTimeout(searchHackTimeout);
+        searchResults = $('#tictail_search_results');
+
+        if (searchBox.val() == "") {
+            contentContainer.fadeIn();
+        } else {
+            searchHackTimeout = setTimeout(function() {
+                var items =  searchResults.find('.item');
+
+                if (items.size() !== 0) {
+                    reRenderSearch(items);
+                    contentContainer.fadeOut();
+                } else {
+                    watch();
+                }
+            }, 100);
+        }
+    };
+
+    var reRenderSearch = function(items) {
+        var container = $('<ul class="product_list">');
+        items.each(function() {
+            var item = $(this),
+                newItem = $('<li>'),
+                href = item.find('a').attr('href'),
+                title = item.find('.title').text(),
+                price = item.find('.price').html(),
+                image = item.find('.thumb img').attr('src'),
+                image = image.replace(/product\/50\//, 'product\/300\/');
+
+            newItem.html("<a href='"+href+"'>\
+                <div class='image_container'>\
+                    <img src='"+image+"' alt='"+title+"'>\
+                </div>\
+                <div class='info'>\
+                    <h2>"+title+"</h2>\
+                    <h4 class='price'>"+price+"</h4>\
+                </div>\
+            </a>");
+            container.append(newItem);
+        });
+        searchResults.html(container);
+        generateMasonry(container);
+    };
+
+    init();
+})();
+
 </script>
 
 {{> tictail/misc}}
