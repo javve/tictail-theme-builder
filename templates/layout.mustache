@@ -28,7 +28,17 @@
 </head>
 <body>
 
-<header>
+<header class="container">
+
+    <a class="logotype" href="{{store_url}}">
+        {{#logotype}}
+            <img src="{{url-300}}" alt="{{store_name}}">
+        {{/logotype}}
+        <span class="store_name">
+            {{store_name}}
+        </span>
+    </a>
+
     <div class="burger">
         <span class="line"></span>
         <span class="line"></span>
@@ -38,8 +48,8 @@
     <div class="full_navigation">
 
         <nav class="main_navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{#children}}{{#is_current}} child_active{{/is_current}}{{/children}}{{/has_children}}{{/is_current}}{{/navigation}}">
-            <ul class="container">
-                <li class="navigation_item {{#on_index}}selected{{/on_index}}">
+            <ul>
+                <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
                     <a href="/">
                         <i class="icon-th"></i> &nbsp;{{#lang}}All items{{/lang}}
                     </a>
@@ -66,7 +76,7 @@
                 </li>
                 {{/store_blog_url}}
 
-                <li>
+                <li class="search-item">
                     <a href="#" id="search-trigger">
                         <i class="icon-search"></i>
                     </a>
@@ -78,7 +88,7 @@
             {{#is_current}}
                 {{#has_children}}
                     <nav class="sub_navigation">
-                        <ul class="container">
+                        <ul>
                             {{#children}}
                                 <li {{#is_current}} class="selected"{{/is_current}}>
                                     <a href="{{url}}">
@@ -93,16 +103,6 @@
         {{/navigation}}
 
     </div>
-
-
-    <a class="logotype" href="{{store_url}}">
-        {{#logotype}}
-            <img src="{{url-300}}" alt="{{store_name}}">
-        {{/logotype}}
-        <span class="store_name">
-            {{store_name}}
-        </span>
-    </a>
 </header>
 
 <div class="container">
@@ -166,7 +166,19 @@ $('header .burger').click(function() {
         searchContainer = $('#search_container');
 
     var init = function() {
-        searchBox.keyup(watch);
+        searchBox.keyup(function(){
+
+            if (searchBox.val() == "") {
+                contentContainer.fadeIn();
+                searchBox.removeClass('search-loading');
+            } else {
+                searchBox.removeClass('search-loading');
+                setTimeout(function() {
+                    searchBox.addClass('search-loading');
+                }, 200);
+            }
+            watch();
+        });
         searchContainer.hide();
         $('#search-trigger').click(function() {
             if (searchContainer.is(':hidden')) {
@@ -178,24 +190,36 @@ $('header .burger').click(function() {
     };
 
     var watch = function() {
+        removeMysteriousExtraResultBox();
+
         clearTimeout(searchHackTimeout);
-        searchResults = $('#tictail_search_results');
+        searchResults = $('.tictail_search_results');
 
         if (searchBox.val() == "") {
             contentContainer.fadeIn();
         } else {
+            contentContainer.fadeOut();
+            searchResults.css('visibility', 'hidden');
             searchHackTimeout = setTimeout(function() {
-                var items =  searchResults.find('.item');
+                var items = searchResults.find('.item');
 
                 if (items.size() !== 0) {
                     reRenderSearch(items);
-                    contentContainer.fadeOut();
                 } else {
                     watch();
                 }
             }, 100);
         }
     };
+
+    var removeMysteriousExtraResultBox = function() {
+        searchContainer.find('.results_box').each(function() {
+            var me = $(this);
+            if (!me.hasClass('tictail_search_results')){
+                me.remove();
+            }
+        });
+    }
 
     var reRenderSearch = function(items) {
         var container = $('<ul class="product_list">');
@@ -221,6 +245,8 @@ $('header .burger').click(function() {
         });
         searchResults.html(container);
         generateMasonry(container);
+        searchResults.hide().css('visibility', 'visible');
+        searchResults.fadeIn();
     };
 
     init();
