@@ -62,14 +62,14 @@
                 </li>
                 {{/navigation}}
 
-                <li class="store_link {{#about_page}}selected{{/about_page}}">
+                <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
                     <a href="/about">
                         <i class="icon-info-sign"></i> &nbsp;{{#lang}}About{{/lang}}
                     </a>
                 </li>
 
                 {{#store_blog_url}}
-                <li class="store_link">
+                <li id="blog_link" class="store_link">
                     <a href="{{store_blog_url}}" target="_blank">
                         <i class="icon-globe"></i> &nbsp;{{#lang}}Blog{{/lang}}
                     </a>
@@ -77,9 +77,7 @@
                 {{/store_blog_url}}
 
                 <li class="search-item">
-                    <a href="#" id="search-trigger">
-                        <i class="icon-search"></i>
-                    </a>
+                    {{{search}}}
                 </li>
             </ul>
         </nav>
@@ -107,7 +105,6 @@
 
 <div class="container">
     <div id="search_container">
-        {{{search}}}
     </div>
     <div class="content_container">
         {{{yield}}}
@@ -161,36 +158,52 @@ $('header .burger').click(function() {
         timeoutCount = 0,
         searchHackTimeout = null,
         searchResults,
+        searchForm = $('#tictail_search'),
+        searchFormWidth = searchForm.width(),
         searchBox = $('#tictail_search_box'),
         contentContainer = $('.content_container'),
-        searchContainer = $('#search_container');
+        searchContainer = $('#search_container'),
+        aboutLink = $('#about_link'),
+        blogLink = $('#blog_link'),
+        storeLinks = $('.store_link'),
+        aboutLinkWidth = aboutLink.width(),
+        blogLinkWidth = blogLink.width();
 
     var init = function() {
+        if ($(window).width() > 575) { // No need to expand in mobile
+            searchBox.focus(function() {
+                storeLinks.animate({ width: 0 });
+                searchForm.animate({ width: searchFormWidth + aboutLinkWidth + blogLinkWidth});
+            });
+            searchBox.blur(function() {
+                if (searchBox.val() == "") {
+                    aboutLink.animate({ width: aboutLinkWidth });
+                    blogLink.animate({ width: blogLinkWidth });
+                    searchForm.animate({ width: searchFormWidth});
+                }
+            });
+        }
+        searchBox.blur(function() {
+            searchForm.removeClass('search-loading');
+        });
         searchBox.keyup(function(){
-
             if (searchBox.val() == "") {
                 contentContainer.fadeIn();
-                searchBox.removeClass('search-loading');
+                searchForm.removeClass('search-loading');
+                searchResults.removeClass('force-show');
             } else {
-                searchBox.removeClass('search-loading');
+                searchForm.removeClass('search-loading');
                 setTimeout(function() {
-                    searchBox.addClass('search-loading');
+                    searchForm.addClass('search-loading');
                 }, 200);
             }
             watch();
-        });
-        searchContainer.hide();
-        $('#search-trigger').click(function() {
-            if (searchContainer.is(':hidden')) {
-                searchContainer.slideDown();
-            } else {
-                searchContainer.slideUp();
-            }
         });
     };
 
     var watch = function() {
         removeMysteriousExtraResultBox();
+        moveResultBox();
 
         clearTimeout(searchHackTimeout);
         searchResults = $('.tictail_search_results');
@@ -200,6 +213,7 @@ $('header .burger').click(function() {
         } else {
             contentContainer.fadeOut();
             searchResults.css('visibility', 'hidden');
+            searchResults.addClass('force-show');
             searchHackTimeout = setTimeout(function() {
                 var items = searchResults.find('.item');
 
@@ -213,12 +227,18 @@ $('header .burger').click(function() {
     };
 
     var removeMysteriousExtraResultBox = function() {
-        searchContainer.find('.results_box').each(function() {
+        $('.results_box').each(function() {
             var me = $(this);
             if (!me.hasClass('tictail_search_results')){
                 me.remove();
             }
         });
+    };
+
+    var moveResultBox = function() {
+        if ($('.results_box').parents('#search_container').size() == 0) {
+            $('.results_box').appendTo(searchContainer);
+        }
     }
 
     var reRenderSearch = function(items) {

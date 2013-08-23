@@ -22,16 +22,17 @@ DROPKICK STYLES
 
 /* Opens the dropdown and holds the menu label */
 .dk_toggle {
-    padding: 12px 20px;
-    background-color:transparent;
-    border: solid 3px #222;
+    padding: 13px 21px;
+    background-color:#e4e4e4;
+    border: none;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
     line-height: normal;
     width:auto !important;
     display: inline-block !important;
-    font-weight: bold;
+    font-weight: normal;
+    color:#777;
 }
 
 /* Applied when the dropdown is focused */
@@ -62,8 +63,7 @@ DROPKICK STYLES
 .dk_options a {
     padding: 8px 59px 8px 20px;
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    color: #333;
+    color: #777;
 }
 .dk_options li:last-child a {
     border-bottom: none;
@@ -71,14 +71,16 @@ DROPKICK STYLES
 .dk_options a:hover,
 .dk_option_current a {
     background-color: #f6f6f6;
-    color: #000;
+    color: #222;
     text-decoration: none;
+}
+.dk_option_current a {
+    font-weight:bold;
 }
 
 /* Inner container for options, this is what makes the scrollbar possible. */
 .dk_options_inner {
     max-height: 250px;
-    border: 3px solid #222;
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
@@ -125,7 +127,7 @@ DROPKICK STYLES
 
 .dk_options {
     display: none;
-    margin-top: -2px;
+    margin-top: 2px;
     position: absolute;
     left: 0;
     width: auto;

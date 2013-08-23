@@ -65,6 +65,10 @@ hr {
     clear:both;
 }
 
+.force-show {
+    display:block !important;
+}
+
 
 /* ******************************
 
@@ -130,6 +134,7 @@ header:after {
     *float:left; /* IE 7 fix */
 
     border-right:solid 1px #f2f2f2;
+    overflow: hidden;
 }
 .main_navigation a {
     display: inline-block;
@@ -324,34 +329,23 @@ SEARCH
 ****************************** */
 
 #tictail_search {
-    text-align: center;
-}
-#tictail_search input {
-    margin: 0;
-    padding: 25px;
-    padding: 12px 20px;
-    background-color:transparent;
-    border: solid 3px #e4e4e4;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
+    background-color:#fff;
+    margin-left:10px;
+    width:100px;
+
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
-    width:31%;
-    margin-bottom:30px;
-    box-sizing: border-box;
-    font-size:15px;
-    font-family: Asap, Helvetica, Arial, 'Lucida Grande', sans-serif;
-    font-weight:bold;
-    color:#777;
-    -webkit-appearance: none;
+
     -webkit-transition: box-shadow 0.3s ease-in-out;
      -moz-transition: box-shadow 0.3s ease-in-out;
        -o-transition: box-shadow 0.3s ease-in-out;
           transition: box-shadow 0.3s ease-in-out;
 }
-#tictail_search input.search-loading {
+#tictail_search.search-loading {
     -webkit-box-shadow: inset 380px 0 0 #eee;
        -moz-box-shadow: inset 380px 0 0 #eee;
             box-shadow: inset 380px 0 0 #eee;
@@ -360,6 +354,32 @@ SEARCH
        -o-transition: box-shadow ease-in-out 3s;
           transition: box-shadow ease-in-out 3s;
 
+}
+
+.tictail_search:before {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
+    margin-left:14px;
+    content: "\f002";
+}
+
+#tictail_search input {
+    margin: 0;
+    padding: 25px;
+    padding: 10px 5px;
+    background-color:transparent;
+    border: none;
+    width:100%;
+    box-sizing: border-box;
+    font-size:15px;
+    font-family: Asap, Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-weight:normal;
+    color:#777;
+    -webkit-appearance: none;
 }
 #tictail_search input::-webkit-input-placeholder { /* WebKit browsers */
     color:    #aaa;
@@ -401,15 +421,15 @@ SEARCH
 }
 
 @media only screen and (max-width: 575px) {
+    #tictail_search {
+        width:90%;
+        margin-bottom:10px;
+    }
     #tictail_search input {
         width:100%;
-        margin-bottom:15px;
     }
     #search_container {
         display:block !important;
-    }
-    .search-item {
-        display:none !important;
     }
 }
 
@@ -589,7 +609,7 @@ PRODUCT PAGE
 .product_info {
 }
 .product_info .slider_container {
-    width: 33%;
+    width: 50%;
     float:left;
 }
 .product_info .slider_background {
@@ -618,7 +638,7 @@ PRODUCT PAGE
 }
 
 .product_info .details_container {
-    width: 67%;
+    width: 50%;
     float:left;
 }
 
@@ -779,14 +799,14 @@ PRODUCT PAGE
 .tictail_add_to_cart_button {
     min-width: 128px;
     margin: 0;
-    padding: 12px 20px;
-    background-color:transparent;
-    border: solid 3px #222;
+    padding: 13px 21px;
+    background-color:#00d10f;
+    border: none;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
     cursor: pointer;
-    color:#222;
+    color:#fff;
     font-weight: bold;
     font-size: inherit;
     display:inline-block;
@@ -807,7 +827,7 @@ PRODUCT PAGE
 }
 
 .tictail_add_to_cart_button:hover {
-    background-color:#222;
+    background-color:#00bc0d;
     color:#fff;
 }
 .tictail_add_to_cart_button:hover:before {
