@@ -33,10 +33,15 @@
     <a class="logotype" href="{{store_url}}">
         {{#logotype}}
             <img src="{{url-300}}" alt="{{store_name}}">
+            <span class="store_name">
+                {{store_name}}
+            </span>
         {{/logotype}}
-        <span class="store_name">
-            {{store_name}}
-        </span>
+        {{#no_logotype}}
+            <span class="store_name">
+                {{store_name}}
+            </span>
+        {{/no_logotype}}
     </a>
 
     <div class="burger">
@@ -50,7 +55,7 @@
         <nav class="main_navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{#children}}{{#is_current}} child_active{{/is_current}}{{/children}}{{/has_children}}{{/is_current}}{{/navigation}}">
             <ul>
                 <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
-                    <a href="/">
+                    <a href="{{store_url}}">
                         <i class="icon-th"></i> &nbsp;{{#lang}}All items{{/lang}}
                     </a>
                 </li>
@@ -63,7 +68,7 @@
                 {{/navigation}}
 
                 <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
-                    <a href="/about">
+                    <a href="{{store_url}}/about">
                         <i class="icon-info-sign"></i> &nbsp;{{#lang}}About{{/lang}}
                     </a>
                 </li>
@@ -76,7 +81,7 @@
                 </li>
                 {{/store_blog_url}}
 
-                <li class="search-item">
+                <li class="search_item">
                     {{{search}}}
                 </li>
             </ul>
@@ -205,14 +210,12 @@ $('header .burger').click(function() {
         removeMysteriousExtraResultBox();
         moveResultBox();
 
-        clearTimeout(searchHackTimeout);
         searchResults = $('.tictail_search_results');
 
         if (searchBox.val() == "") {
             contentContainer.fadeIn();
         } else {
             contentContainer.fadeOut();
-            searchResults.css('visibility', 'hidden');
             searchResults.addClass('force-show');
             searchHackTimeout = setTimeout(function() {
                 var items = searchResults.find('.item');
@@ -222,7 +225,7 @@ $('header .burger').click(function() {
                 } else {
                     watch();
                 }
-            }, 100);
+            }, 50);
         }
     };
 

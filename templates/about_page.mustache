@@ -4,6 +4,25 @@
 
         <div class="store_description">
             {{{store_description}}}
+
+            <br /><br />
+            {{#store_email}}
+                <p>
+                    <b><a href="mailto:{{store_email}}">{{#lang}}Email us{{/lang}}</a></b>
+                </p>
+            {{/store_email}}
+
+            <p>
+                <small>
+                {{#return_policy}}
+                    {{#lang}}Return Policy{{/lang}}
+                {{/return_policy}}
+                &nbsp; &nbsp;
+                {{#terms}}
+                    {{#lang}}Terms &amp; Conditions{{/lang}}
+                {{/terms}}
+            </small>
+            </p>
         </div>
     </article>
 {{/about_page}}
