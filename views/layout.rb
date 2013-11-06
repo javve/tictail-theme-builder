@@ -59,7 +59,7 @@ class App
 
       def search
         '<form id="tictail_search" class="tictail_form tictail_search">'\
-        '  <input id="tictail_search_box" name="q" autocomplete="off" type="text" title="Search" />'\
+        '  <input id="tictail_search_box" class="tictail_search_box" name="q" autocomplete="off" type="text" title="Search" />'\
         '</form>'
       end
 
