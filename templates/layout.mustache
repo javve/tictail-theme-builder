@@ -16,7 +16,8 @@
 
     <link href="{{assets_url}}/771/css/anythingslider.css" rel="stylesheet" type="text/css">
     <link href="{{assets_url}}/shared/css/base.css" rel="stylesheet" type="text/css">
-    <link href='//fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
     <link href="/style.css" rel="stylesheet" type="text/css">
@@ -28,93 +29,95 @@
 </head>
 <body>
 
-<header class="container">
 
-    <a class="logotype" href="{{store_url}}">
-        {{#logotype}}
-            <img src="{{url-300}}" alt="{{store_name}}">
-            <span class="store_name">
-                {{store_name}}
-            </span>
-        {{/logotype}}
-        {{#no_logotype}}
-            <span class="store_name">
-                {{store_name}}
-            </span>
-        {{/no_logotype}}
+<a href="#" class="burger">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+</a>
+
+<div class="search-box open">
+    <a href="#" class="search-icon">
+        <i class="icon-search"></i>
     </a>
+    {{{search}}}
+</div>
 
-    <div class="burger">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-    </div>
-
-    <div class="full_navigation">
-
-        <nav class="main_navigation {{#navigation}}{{#is_current}}{{#has_children}}got_subnavigation{{#children}}{{#is_current}} child_active{{/is_current}}{{/children}}{{/has_children}}{{/is_current}}{{/navigation}}">
-            <ul>
-                <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
-                    <a href="{{store_url}}">
-                        <i class="icon-th"></i> &nbsp;{{#lang}}All items{{/lang}}
-                    </a>
-                </li>
-                {{#navigation}}
-                <li class="navigation_item {{#is_current}}selected{{/is_current}}">
-                    <a href="{{url}}">
-                        {{label}}
-                    </a>
-                </li>
-                {{/navigation}}
-
-                <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
-                    <a href="{{store_url}}/about">
-                        <i class="icon-info-sign"></i> &nbsp;{{#lang}}About{{/lang}}
-                    </a>
-                </li>
-
-                {{#store_blog_url}}
-                <li id="blog_link" class="store_link">
-                    <a href="{{store_blog_url}}" target="_blank">
-                        <i class="icon-globe"></i> &nbsp;{{#lang}}Blog{{/lang}}
-                    </a>
-                </li>
-                {{/store_blog_url}}
-
-                <li class="search_item">
-                    {{{search}}}
-                </li>
-            </ul>
-        </nav>
-
+<nav class="navigation">
+    <ul>
+        <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
+            <a href="{{store_url}}">
+                {{#lang}}All items{{/lang}}
+            </a>
+        </li>
         {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
             {{#is_current}}
                 {{#has_children}}
-                    <nav class="sub_navigation">
-                        <ul>
-                            {{#children}}
-                                <li {{#is_current}} class="selected"{{/is_current}}>
-                                    <a href="{{url}}">
-                                        {{label}}
-                                    </a>
-                                </li>
-                            {{/children}}
-                        </ul>
-                    </nav>
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
                 {{/has_children}}
             {{/is_current}}
+        </li>
         {{/navigation}}
+    </ul>
+</nav>
 
-    </div>
-</header>
+
+<a class="logotype" href="{{store_url}}">
+    {{#logotype}}
+        <img src="{{url-300}}" alt="{{store_name}}">
+        <span class="store_name">
+            {{store_name}}
+        </span>
+    {{/logotype}}
+    {{#no_logotype}}
+        <span class="store_name">
+            {{store_name}}
+        </span>
+    {{/no_logotype}}
+</a>
 
 <div class="container">
-    <div id="search_container">
-    </div>
-    <div class="content_container">
-        {{{yield}}}
-    </div>
+    {{{yield}}}
 </div>
+
+<footer>
+    <ul>
+        <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
+            <a href="{{store_url}}/about">
+                <i class="icon-info-sign"></i> &nbsp;{{#lang}}About{{/lang}}
+            </a>
+        </li>
+        {{#store_blog_url}}
+        <li id="blog_link" class="store_link">
+            <a href="{{store_blog_url}}" target="_blank">
+                <i class="icon-globe"></i> &nbsp;{{#lang}}Blog{{/lang}}
+            </a>
+        </li>
+        {{/store_blog_url}}
+        {{#return_policy}}
+            <li>
+                {{#lang}}Return Policy{{/lang}}
+            </li>
+        {{/return_policy}}
+        {{#terms}}
+            <li>
+                {{#lang}}Terms &amp; Conditions{{/lang}}
+            </li>
+        {{/terms}}
+    </ul>
+</footer>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -126,25 +129,7 @@ $('.tictail_variations_select').dropkick({
 });
 </script>
 
-<script src="{{assets_url}}/shared/js/jquery.masonry.2.1.03.min.js"></script>
 <script>
-
-function generateMasonry(container) {
-    container.imagesLoaded(function() {
-        var list = this,
-            rearrange = function() {
-                list.masonry({
-                    itemSelector: 'li'
-                });
-            };
-        rearrange();
-    });
-}
-
-generateMasonry($('.product_list'));
-$(window).resize(function() {
-    generateMasonry($('.product_list'));
-});
 
 var full_navigation = $('.full_navigation');
 $('header .burger').click(function() {
@@ -156,81 +141,6 @@ $('header .burger').click(function() {
         }
     }
 });
-
-(function SearchBoxWatcher() {
-
-    var searchForm = $('#tictail_search'),
-        searchFormWidth = searchForm.width(),
-        searchBox = $('#tictail_search_box'),
-        contentContainer = $('.content_container'),
-        searchContainer = $('#search_container'),
-        aboutLink = $('#about_link'),
-        blogLink = $('#blog_link'),
-        storeLinks = $('.store_link'),
-        aboutLinkWidth = aboutLink.width(),
-        blogLinkWidth = blogLink.width();
-
-    var init = function() {
-        if ($(window).width() > 575) { // No need to expand in mobile
-            searchBox.focus(function() {
-                storeLinks.animate({ width: 0 });
-                searchForm.animate({ width: searchFormWidth + aboutLinkWidth + blogLinkWidth});
-            });
-            searchBox.blur(function() {
-                if (searchBox.val() == "") {
-                    aboutLink.animate({ width: aboutLinkWidth });
-                    blogLink.animate({ width: blogLinkWidth });
-                    searchForm.animate({ width: searchFormWidth});
-                }
-            });
-        }
-
-        setTimeout(overrideTTMethods, 500);
-    };
-
-    function overrideTTMethods() {
-        TT.store.search.template = ['<ul class="product_list">',
-                '[[#products]]',
-                '<li>',
-                    '<a href="[[url]]" [[#out_of_stock]]class="out_of_stock"[[/out_of_stock]]>',
-                        '<div class="image_container">',
-                            '[[#primary_image]]',
-                                '<img src="[[url-300]]" alt="[[title]]">',
-                            '[[/primary_image]]',
-                        '</div>',
-                        '<div class="info">',
-                            '<h2>[[title]]</h2>',
-                            '[[#in_stock]]',
-                            '<h4 class="price">[[{price_with_currency}]]</h4>',
-                            '[[/in_stock]]',
-                            '[[#out_of_stock]]',
-                            '<h4 class="price out_of_stock_price">[[#lang]]Out of stock[[/lang]]</h4>',
-                            '[[/out_of_stock]]',
-                        '</div>',
-                    '</a>',
-                '</li>',
-                '[[/products]]',
-            '</ul>'].join('\n').replace(/\[/g, '\{').replace(/\]/g, '\}');
-
-        var handleResults = TT.store.search.handleResults;
-        TT.store.search.handleResults = function() {
-            handleResults.apply(TT.store.search, arguments);
-            $('#tictail_search_results').attr('style', 'top: ' + $('header').outerHeight(true) + 'px !important');
-            generateMasonry($('#tictail_search_results .product_list'));
-        }
-        var toggleResults = TT.store.search.toggleResults;
-        TT.store.search.toggleResults = function() {
-            toggleResults.apply(TT.store.search, arguments);
-            if ($('#tictail_search_results').is(':visible')) {
-                contentContainer.fadeOut();
-            } else {
-                contentContainer.fadeIn();
-            }
-        }
-    }
-
-    init();
-})();
 
 </script>
 

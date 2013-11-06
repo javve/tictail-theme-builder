@@ -4,14 +4,18 @@ GENERAL
 
 ****************************** */
 
+html {
+    font-size:62.5%;
+}
 body {
     padding: 0;
-    background-color:#fff;
-    font-family: Asap, Helvetica, Arial, 'Lucida Grande', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 18px;
-    line-height: 1.4;
-    color: #777;
+    background-color:#f7f5ef;
+    font-family: Arvo, Arial, sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: #626262;
+    position:relative;
+    left:220px;
 }
 
 a {
@@ -122,114 +126,93 @@ header:after {
     display:none;
 }
 .burger {
+    display: block;
+    float: none;
+    width: 20px;
+    position: absolute;
+    top:10px;
+    left:10px;
+    padding:10px 10px 7px;
+}
+.burger:hover {
+    background-color:#e6e1d7;
+}
+.burger .line {
+    display: block;
+    background-color: #3d3d3d;
+    height: 4px;
+    margin: 0 0 3px;
+}
+.search-box {
+    position: absolute;
+    left:50px;
+    top:10px;
+    line-height:1;
+    height:40px;
+}
+.search-icon {
+    height:40px;
+    width:40px;
+    display: block;
+    text-align: center;
+}
+.search-icon:hover {
+    background-color:#e6e1d7;
+}
+.search-box .icon-search {
+    font-size:2.2rem;
+    line-height: 40px;
+    color:#3d3d3d;
+    display:block;
+}
+.search-box .tictail_search {
     display:none;
 }
-
-.main_navigation {
-    background-color:#333;
-    font-size:15px;
-    line-height: 17px;
-    margin-bottom:30px;
+.search-box.open .tictail_search {
+    display:block;
 }
 
-.main_navigation > ul {
-    -webkit-box-shadow: inset 0 3px 0 #777;
-       -moz-box-shadow: inset 0 3px 0 #777;
-            box-shadow: inset 0 3px 0 #777;
+.navigation {
+    font-family: Abel;
+    letter-spacing: 0.05rem;
+    background-color:#3d3d3d;
+    font-size:1.8rem;
+    height:100%;
+    width:220px;
+    position: fixed;
+    left:0;
+    top:0;
+    text-transform: uppercase;
+}
+.navigation a {
+    color:#fff;
+}
+.navigation a:hover {
+    border-bottom:solid 1px #fff;
+}
+.navigation > ul {
+    padding:1rem 0 0 2rem;
 }
 
-.main_navigation > ul > li {
-    display: inline-block;
-    margin: 0 -2px;
+.navigation li {
+    margin: 0;
+    padding:0.5rem 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    *float:left; /* IE 7 fix */
-
-    border-right:solid 1px #333;
-    overflow: hidden;
 }
-.main_navigation > ul > li > a {
-    display: inline-block;
-    padding:22px 15px 18px;
-    color:#bbb;
-    -webkit-transition: all 0.3s ease-in-out;
-     -moz-transition: all 0.3s ease-in-out;
-       -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
-}
-.main_navigation > ul > li > a:hover {
-    color:#fff;
-    -webkit-box-shadow: inset 0 4px 0 #d5d5d5;
-       -moz-box-shadow: inset 0 4px 0 #d5d5d5;
-            box-shadow: inset 0 4px 0 #d5d5d5;
-}
-.main_navigation > ul > li.selected > a {
-    color: #fff;
-    font-weight: bold;
-    -webkit-box-shadow: inset 0 4px 0 #00afd1;
-       -moz-box-shadow: inset 0 4px 0 #00afd1;
-            box-shadow: inset 0 4px 0 #00afd1;
-}
-.main_navigation .search_item {
-    padding:8px 10px;
-}
-
-.main_navigation.got_subnavigation {
-    margin-bottom:1px;
-}
-.main_navigation.got_subnavigation.child_active > li.selected > a {
-    color:#fff;
-    -webkit-box-shadow: none;
-       -moz-box-shadow: none;
-            box-shadow: none;
+.navigation .selected > a {
+    border-bottom:solid 1px #fff;
 }
 
 .sub_navigation {
-    background-color:#f2f2f2;
-    font-size:14px;
-    margin-bottom:30px;
+    padding:0.5rem 0 0 1rem;
+    text-transform: none;
 }
-.sub_navigation > ul {
+.sub_navigation a {
+    color:#cdcdcd;
 }
-.sub_navigation > ul > li {
-    display: inline-block;
-    margin: 0 -2px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    *float:left; /* IE 7 fix */
-
-}
-.sub_navigation > ul > li > a {
-    display: inline-block;
-    padding:10px 20px;
-    color:#555;
-    -webkit-transition: all 0.3s ease-in-out;
-     -moz-transition: all 0.3s ease-in-out;
-       -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
-}
-.sub_navigation > ul > li > a:hover {
-    color:#000;
-    -webkit-box-shadow: inset 0 4px 0 #d5d5d5;
-       -moz-box-shadow: inset 0 4px 0 #d5d5d5;
-            box-shadow: inset 0 4px 0 #d5d5d5;
-}
-.sub_navigation > ul > li.selected > a {
-    color: #222;
-    font-weight: bold;
-    -webkit-box-shadow: inset 0 4px 0 #00afd1;
-       -moz-box-shadow: inset 0 4px 0 #00afd1;
-            box-shadow: inset 0 4px 0 #00afd1;
-}
-
-#tictail_search_results {
-    position: absolute !important;
-    width:100%;
-    left:0 !important;
-    top:215px !important;
-}
-#tictail_search_results .product_list .image_container img {
-    margin-bottom: -3px;
+.sub_navigation li {
+    padding:0.3rem 0;
 }
 
 
@@ -281,12 +264,12 @@ header:after {
         display:none;
         padding-top:10px;
     }
-    .main_navigation > ul {
+    .navigation > ul {
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
                 box-shadow: none;
     }
-    .main_navigation,
+    .navigation,
     .sub_navigation {
         float:none;
         text-align: left;
@@ -295,55 +278,31 @@ header:after {
     .sub_navigation {
         border-top:solid 1px #fff;
     }
-    .main_navigation > ul > li,
+    .navigation > ul > li,
     .sub_navigation > ul > li {
         display: block;
         margin:0;
         border-right:none;
     }
-    .main_navigation > ul > li > a,
+    .navigation > ul > li > a,
     .sub_navigation > ul > li > a {
         display: block;
         padding:10px 20px;
     }
-    .main_navigation > ul > li > a:hover,
+    .navigation > ul > li > a:hover,
     .sub_navigation > ul > li > a:hover {
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
                 box-shadow: none;
     }
 
-    .main_navigation > ul > li.selected > a,
+    .navigation > ul > li.selected > a,
     .sub_navigation  > ul > li.selected > a {
         color: #222;
         font-weight: bold;
         -webkit-box-shadow: inset 4px 0 0 #00afd1;
            -moz-box-shadow: inset 4px 0 0 #00afd1;
                 box-shadow: inset 4px 0 0 #00afd1;
-    }
-
-    .burger {
-        display: block;
-        float: none;
-        height: 30px;
-        width: 30px;
-        position: absolute;
-        bottom:2px;
-        right:16px;
-    }
-    .burger .line {
-        display: block;
-        background-color: #bbb;
-        height: 4px;
-        margin: 3px 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
-
-    #tictail_search_results {
-        width:90%;
-        left:5% !important;
     }
 }
 @media only screen and (max-width: 400px) {
@@ -357,7 +316,7 @@ header:after {
 SEARCH
 
 ****************************** */
-
+/*
 #tictail_search {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -375,16 +334,6 @@ SEARCH
      -moz-transition: box-shadow 0.3s ease-in-out;
        -o-transition: box-shadow 0.3s ease-in-out;
           transition: box-shadow 0.3s ease-in-out;
-}
-#tictail_search.search-loading {
-    -webkit-box-shadow: inset 380px 0 0 #eee;
-       -moz-box-shadow: inset 380px 0 0 #eee;
-            box-shadow: inset 380px 0 0 #eee;
-    -webkit-transition: box-shadow ease-in-out 3s;
-     -moz-transition: box-shadow ease-in-out 3s;
-       -o-transition: box-shadow ease-in-out 3s;
-          transition: box-shadow ease-in-out 3s;
-
 }
 
 .tictail_search:before {
@@ -412,19 +361,6 @@ SEARCH
     color:#777;
     -webkit-appearance: none;
 }
-#tictail_search input::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #aaa;
-}
-#tictail_search input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #aaa;
-}
-#tictail_search input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #aaa;
-}
-#tictail_search input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #aaa;
-}
-
 #tictail_search input:focus {
     outline: 0;
     color: #777;
@@ -463,7 +399,7 @@ SEARCH
         display:block !important;
     }
 }
-
+*/
 /* ******************************
 
 FOOTER
