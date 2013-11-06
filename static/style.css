@@ -132,13 +132,13 @@ header:after {
     margin-bottom:30px;
 }
 
-.main_navigation ul {
+.main_navigation > ul {
     -webkit-box-shadow: inset 0 3px 0 #777;
        -moz-box-shadow: inset 0 3px 0 #777;
             box-shadow: inset 0 3px 0 #777;
 }
 
-.main_navigation li {
+.main_navigation > ul > li {
     display: inline-block;
     margin: 0 -2px;
     text-overflow: ellipsis;
@@ -148,7 +148,7 @@ header:after {
     border-right:solid 1px #333;
     overflow: hidden;
 }
-.main_navigation a {
+.main_navigation > ul > li > a {
     display: inline-block;
     padding:22px 15px 18px;
     color:#bbb;
@@ -157,13 +157,13 @@ header:after {
        -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
 }
-.main_navigation a:hover {
+.main_navigation > ul > li > a:hover {
     color:#fff;
     -webkit-box-shadow: inset 0 4px 0 #d5d5d5;
        -moz-box-shadow: inset 0 4px 0 #d5d5d5;
             box-shadow: inset 0 4px 0 #d5d5d5;
 }
-.main_navigation .selected > a {
+.main_navigation > ul > li.selected > a {
     color: #fff;
     font-weight: bold;
     -webkit-box-shadow: inset 0 4px 0 #00afd1;
@@ -177,7 +177,7 @@ header:after {
 .main_navigation.got_subnavigation {
     margin-bottom:1px;
 }
-.main_navigation.got_subnavigation.child_active .selected > a {
+.main_navigation.got_subnavigation.child_active > li.selected > a {
     color:#fff;
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
@@ -214,7 +214,7 @@ header:after {
        -moz-box-shadow: inset 0 4px 0 #d5d5d5;
             box-shadow: inset 0 4px 0 #d5d5d5;
 }
-.sub_navigation .selected > a {
+.sub_navigation > .selected > a {
     color: #222;
     font-weight: bold;
     -webkit-box-shadow: inset 0 4px 0 #00afd1;
@@ -222,6 +222,15 @@ header:after {
             box-shadow: inset 0 4px 0 #00afd1;
 }
 
+#tictail_search_results {
+    position: absolute !important;
+    width:100%;
+    left:0 !important;
+    top:215px !important;
+}
+#tictail_search_results .product_list .image_container img {
+    margin-bottom: -3px;
+}
 
 
 @media only screen and (max-width: 1024px) {
@@ -351,6 +360,7 @@ SEARCH
     background-color:#fff;
     margin-left:10px;
     width:100px;
+    position:static;
 
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
