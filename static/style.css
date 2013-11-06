@@ -15,6 +15,12 @@ body {
     line-height: 1.3;
     color: #626262;
     position:relative;
+    -webkit-transition: left 0.2s ease-in-out;
+     -moz-transition: left 0.2s ease-in-out;
+       -o-transition: left 0.2s ease-in-out;
+          transition: left 0.2s ease-in-out;
+}
+body.navigation-open {
     left:220px;
 }
 
@@ -134,7 +140,8 @@ header:after {
     left:10px;
     padding:10px 10px 7px;
 }
-.burger:hover {
+.burger:hover,
+.navigation-open .burger {
     background-color:#e6e1d7;
 }
 .burger .line {
@@ -155,6 +162,7 @@ header:after {
     width:40px;
     display: block;
     text-align: center;
+    float:left;
 }
 .search-icon:hover {
     background-color:#e6e1d7;
@@ -168,8 +176,20 @@ header:after {
 .search-box .tictail_search {
     display:none;
 }
+.search-box.open .search-icon {
+    background-color:#e6e1d7;
+}
 .search-box.open .tictail_search {
+    margin-left:-2px;
     display:block;
+    float:left;
+}
+.search-box .tictail_search_box {
+    border: none;
+    line-height: 40px;
+    height: 40px;
+    padding:0 1.5rem;
+    font: normal 1.6rem Abel, arial, sans-serif;
 }
 
 .navigation {
@@ -180,9 +200,16 @@ header:after {
     height:100%;
     width:220px;
     position: fixed;
-    left:0;
+    left:-220px;
     top:0;
     text-transform: uppercase;
+    -webkit-transition: left 0.2s ease-in-out;
+     -moz-transition: left 0.2s ease-in-out;
+       -o-transition: left 0.2s ease-in-out;
+          transition: left 0.2s ease-in-out;
+}
+.navigation.open {
+    left:0;
 }
 .navigation a {
     color:#fff;

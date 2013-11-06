@@ -36,7 +36,7 @@
     <span class="line"></span>
 </a>
 
-<div class="search-box open">
+<div class="search-box">
     <a href="#" class="search-icon">
         <i class="icon-search"></i>
     </a>
@@ -131,15 +131,28 @@ $('.tictail_variations_select').dropkick({
 
 <script>
 
-var full_navigation = $('.full_navigation');
-$('header .burger').click(function() {
-    if ($(window).width() < 575) {
-        if (full_navigation.is(':visible')) {
-            full_navigation.slideUp();
-        } else {
-            full_navigation.slideDown();
-        }
+var navigation = $('.navigation');
+$('.burger').click(function(e) {
+    e.preventDefault();
+    if (navigation.hasClass('open')) {
+        navigation.removeClass('open');
+        $('body').removeClass('navigation-open');
+    } else {
+        navigation.addClass('open');
+        $('body').addClass('navigation-open');
     }
+    return false;
+});
+
+var searchBox = $('.search-box');
+$('.search-icon').click(function(e) {
+    e.preventDefault();
+    if (searchBox.hasClass('open')) {
+        searchBox.removeClass('open');
+    } else {
+        searchBox.addClass('open');
+    }
+    return false;
 });
 
 </script>
