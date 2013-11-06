@@ -8,21 +8,9 @@
             <br /><br />
             {{#store_email}}
                 <p>
-                    <b><a href="mailto:{{store_email}}">{{#lang}}Email us{{/lang}}</a></b>
+                    Contact: <a href="mailto:{{store_email}}">{{#lang}}{{store_email}}{{/lang}}</a>
                 </p>
             {{/store_email}}
-
-            <p>
-                <small>
-                {{#return_policy}}
-                    {{#lang}}Return Policy{{/lang}}
-                {{/return_policy}}
-                &nbsp; &nbsp;
-                {{#terms}}
-                    {{#lang}}Terms &amp; Conditions{{/lang}}
-                {{/terms}}
-            </small>
-            </p>
         </div>
     </article>
 {{/about_page}}

@@ -61,8 +61,9 @@ a:hover {
 h1 {
     color:#222;
     margin: 0 0 20px;
-    font-size: 33px;
-    font-weight: bold;
+    font-size: 3rem;
+    font-weight: normal;
+    font-family: Abel, arial, sans-serif;
 }
 
 h2 {
@@ -462,7 +463,8 @@ FOOTER
 footer {
     font-family: Abel, arial, sans-serif;
     clear: both;
-    padding:30px 0 30px 30px;
+    width:100%;
+    margin:30px 0 30px 30px;
     font-size: 1.6rem;
     text-transform: uppercase;
     position: fixed;
@@ -470,6 +472,10 @@ footer {
 footer li {
     display:inline-block;
     margin-right: 30px;
+}
+.footer-contact {
+    float:right;
+    padding-right:30px;
 }
 
 @media only screen and (max-width: 768px) {

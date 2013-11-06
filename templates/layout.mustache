@@ -117,6 +117,11 @@
                 {{#lang}}Terms &amp; Conditions{{/lang}}
             </li>
         {{/terms}}
+        {{#store_email}}
+            <li class="footer-contact">
+                Contact: <a href="mailto:{{store_email}}">{{#lang}}{{store_email}}{{/lang}}</a>
+            </li>
+        {{/store_email}}
     </ul>
 </footer>
 
