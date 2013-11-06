@@ -189,9 +189,9 @@ header:after {
     font-size:14px;
     margin-bottom:30px;
 }
-.sub_navigation ul {
+.sub_navigation > ul {
 }
-.sub_navigation li {
+.sub_navigation > ul > li {
     display: inline-block;
     margin: 0 -2px;
     text-overflow: ellipsis;
@@ -199,7 +199,7 @@ header:after {
     *float:left; /* IE 7 fix */
 
 }
-.sub_navigation a {
+.sub_navigation > ul > li > a {
     display: inline-block;
     padding:10px 20px;
     color:#555;
@@ -208,13 +208,13 @@ header:after {
        -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
 }
-.sub_navigation a:hover {
+.sub_navigation > ul > li > a:hover {
     color:#000;
     -webkit-box-shadow: inset 0 4px 0 #d5d5d5;
        -moz-box-shadow: inset 0 4px 0 #d5d5d5;
             box-shadow: inset 0 4px 0 #d5d5d5;
 }
-.sub_navigation > .selected > a {
+.sub_navigation > ul > li.selected > a {
     color: #222;
     font-weight: bold;
     -webkit-box-shadow: inset 0 4px 0 #00afd1;
@@ -281,7 +281,7 @@ header:after {
         display:none;
         padding-top:10px;
     }
-    .main_navigation ul {
+    .main_navigation > ul {
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
                 box-shadow: none;
@@ -295,26 +295,26 @@ header:after {
     .sub_navigation {
         border-top:solid 1px #fff;
     }
-    .main_navigation li,
-    .sub_navigation li {
+    .main_navigation > ul > li,
+    .sub_navigation > ul > li {
         display: block;
         margin:0;
         border-right:none;
     }
-    .main_navigation li a,
-    .sub_navigation li a {
+    .main_navigation > ul > li > a,
+    .sub_navigation > ul > li > a {
         display: block;
         padding:10px 20px;
     }
-    .main_navigation li a:hover,
-    .sub_navigation li a:hover {
+    .main_navigation > ul > li > a:hover,
+    .sub_navigation > ul > li > a:hover {
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
                 box-shadow: none;
     }
 
-    .main_navigation .selected > a,
-    .sub_navigation .selected > a {
+    .main_navigation > ul > li.selected > a,
+    .sub_navigation  > ul > li.selected > a {
         color: #222;
         font-weight: bold;
         -webkit-box-shadow: inset 4px 0 0 #00afd1;
@@ -339,6 +339,11 @@ header:after {
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
+    }
+
+    #tictail_search_results {
+        width:90%;
+        left:5% !important;
     }
 }
 @media only screen and (max-width: 400px) {
