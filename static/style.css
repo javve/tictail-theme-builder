@@ -22,6 +22,12 @@ body.navigation-open footer,
 body.navigation-open .logotype-container {
     left:220px;
 }
+.navigation-open .search-box {
+    left:280px;
+}
+.navigation-open .burger {
+    left:240px;
+}
 body,
 .burger,
 .search-box,
@@ -158,11 +164,8 @@ header:after {
     width: 20px;
     position: fixed;
     top:10px;
-    left:10px;
+    left:20px;
     padding:10px 10px 7px;
-}
-.navigation-open .burger {
-    left:230px;
 }
 .burger:hover,
 .navigation-open .burger {
@@ -176,13 +179,10 @@ header:after {
 }
 .search-box {
     position: fixed;
-    left:50px;
+    left:60px;
     top:10px;
     line-height:1;
     height:40px;
-}
-.navigation-open .search-box {
-    left:270px;
 }
 .search-icon {
     height:40px;
@@ -230,6 +230,7 @@ header:after {
     left:-220px;
     top:0;
     text-transform: uppercase;
+    text-align: left;
     -webkit-transition: left 0.2s ease-in-out;
      -moz-transition: left 0.2s ease-in-out;
        -o-transition: left 0.2s ease-in-out;
@@ -277,9 +278,7 @@ header:after {
         margin-right:25px;
     }
     .navigation {
-        border-top:solid 1px #eee;
         clear: both;
-        text-align: center;
         float: none;
         padding-top:10px;
     }
