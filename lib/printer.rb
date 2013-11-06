@@ -23,7 +23,7 @@ class Printer
 
         layout = layout.sub(/\<link href=\"\/dropkick\.css\" rel=\"stylesheet\" type=\"text\/css\"\>/, '')
         layout = layout.sub(/\<link href=\"\/style\.css\" rel=\"stylesheet\" type=\"text\/css\"\>/, '<style type="text/css">'+css+'</style>')
-        layout = layout.sub(/\{\{\> tictail\/misc\}\}/, tictail_misc)
+        layout = layout.sub(/\{\{\> tictail\/misc\}\}/, '')
         layout = layout.gsub(/\{\{#has_children\}\}/, '{{#children?}}')
         layout = layout.gsub(/\{\{\/has_children\}\}/, '{{/children?}}')
 
