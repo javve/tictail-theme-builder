@@ -22,17 +22,16 @@ DROPKICK STYLES
 
 /* Opens the dropdown and holds the menu label */
 .dk_toggle {
-    padding: 13px 21px;
-    background-color:#e4e4e4;
     border: none;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-    line-height: normal;
     width:auto !important;
     display: inline-block !important;
+
+    font-size: 20px;
+    text-transform: uppercase;
+    line-height: 30px;
+    padding:0 20px;
+    background-color:#e6e1d7;
     font-weight: normal;
-    color:#777;
 }
 
 /* Applied when the dropdown is focused */
@@ -45,47 +44,39 @@ DROPKICK STYLES
 .dk_open {
     z-index: 10;
 }
-.dk_open .dk_toggle {
-    -webkit-border-radius: 25px 25px 0 0;
-    -moz-border-radius: 25px 25px 0 0;
-    border-radius: 25px 25px 0 0;
-}
 
 /* The outer container of the options */
 .dk_options {
-    -webkit-box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
-    -moz-box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
-    box-shadow: rgba(0, 0, 0, .2) 0 2px 8px;
-    -webkit-border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    border-radius: 0 0 5px 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, .4) 0 1px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, .4) 0 1px 2px;
+    box-shadow: rgba(0, 0, 0, .4) 0 1px 2px;
 }
 .dk_options a {
-    padding: 8px 59px 8px 20px;
-    background-color: #fff;
-    color: #777;
+    padding: 0 20px 0 20px;
+    background-color: #e6e1d7;
+    font-size:20px;
+    line-height: 30px;
+    font-weight:normal;
 }
 .dk_options li:last-child a {
     border-bottom: none;
 }
 .dk_options a:hover,
 .dk_option_current a {
-    background-color: #f6f6f6;
     color: #222;
     text-decoration: none;
 }
+.dk_options a:hover {
+    background-color:#d5cfc4;
+}
 .dk_option_current a {
     font-weight:bold;
+    background-color:#dfdad0;
 }
 
 /* Inner container for options, this is what makes the scrollbar possible. */
 .dk_options_inner {
     max-height: 250px;
-    -webkit-border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    border-radius: 0 0 5px 5px;
-    color: #222;
-    font-weight: normal;
 }
 
 /* Set a max-height on the options inner */
