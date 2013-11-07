@@ -18,21 +18,23 @@
                     {{/out_of_stock}}
                 </div>
 
-                {{#add_to_cart}}
-                    <div class="add_to_cart">
-                        {{#add_to_cart_button}}
-                            {{#lang}}Add to cart{{/lang}}
-                        {{/add_to_cart_button}}
-                    </div>
-                    <div class="variations_container">
-                        {{#variations_select}}{{/variations_select}}
-                    </div>
-                {{/add_to_cart}}
+                {{#in_stock}}
+                    {{#add_to_cart}}
+                        <div class="add_to_cart">
+                            {{#add_to_cart_button}}
+                                {{#lang}}Add to cart{{/lang}}
+                            {{/add_to_cart_button}}
+                        </div>
+                        <div class="variations_container">
+                            {{#variations_select}}{{/variations_select}}
+                        </div>
+                    {{/add_to_cart}}
+                {{/in_stock}}
 
                 {{! This block will be rendered instead of the #add_to_cart block when the product is out of stock }}
                 {{#out_of_stock}}
                 <div class="out_of_stock">
-                    {{#lang}}This product is out of stock{{/lang}}
+                    {{#lang}}Sold out{{/lang}}
                 </div>
                 {{/out_of_stock}}
 

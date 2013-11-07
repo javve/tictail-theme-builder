@@ -571,7 +571,6 @@ PRODUCT PAGE
        -o-transition: all 0.1s ease-in-out;
           transition: all 0.1s ease-in-out;
 }
-
 .tictail_add_to_cart_button:hover {
     background-color:#f30001;
     color:#fff;
@@ -597,6 +596,17 @@ PRODUCT PAGE
         width:100%;
         margin-bottom:15px;
     }
+}
+
+.product_info .out_of_stock {
+    font-size: 20px;
+    text-transform: uppercase;
+    line-height: 30px;
+    padding:0 20px;
+    background-color:#9a9996;
+    display:block;
+    float:left;
+    color:#fff;
 }
 
 .product_info .price {
