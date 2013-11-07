@@ -56,7 +56,7 @@
         {{/product}}
 
         {{! Render a list of related products if there are any }}
-        {{!#related_products?}}
+        {{#related_products?}}
         <aside id="related_products" class="related_products">
 
             <div class="related_products_title">
@@ -87,7 +87,7 @@
                 {{/related_products}}
             </ul>
         </aside>
-        {{!/related_products?}}
+        {{/related_products?}}
     </article>
 
 {{/product_page}}
