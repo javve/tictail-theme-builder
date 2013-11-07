@@ -68,6 +68,30 @@
         </li>
         {{/navigation}}
     </ul>
+    <ul class="mobile-only">
+        <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
+            <a href="{{store_url}}/about">
+                {{#lang}}About{{/lang}}
+            </a>
+        </li>
+        {{#store_blog_url}}
+        <li id="blog_link" class="store_link">
+            <a href="{{store_blog_url}}" target="_blank">
+                {{#lang}}Blog{{/lang}}
+            </a>
+        </li>
+        {{/store_blog_url}}
+        <li>
+            {{#return_policy}}
+                {{#lang}}Return Policy{{/lang}}
+            {{/return_policy}}
+        </li>
+        <li>
+            {{#terms}}
+                {{#lang}}Terms &amp; Conditions{{/lang}}
+            {{/terms}}
+        </li>
+    </ul>
 </nav>
 
 <div class="logotype-container">
@@ -92,28 +116,28 @@
 
 <footer>
     <ul>
-        <li id="about_link" class="store_link {{#about_page}}selected{{/about_page}}">
+        <li id="about_link" class="desktop_only {{#about_page}}selected{{/about_page}}">
             <a href="{{store_url}}/about">
                 {{#lang}}About{{/lang}}
             </a>
         </li>
         {{#store_blog_url}}
-        <li id="blog_link" class="store_link">
+        <li id="blog_link" class="desktop_only store_link">
             <a href="{{store_blog_url}}" target="_blank">
                 {{#lang}}Blog{{/lang}}
             </a>
         </li>
         {{/store_blog_url}}
-        {{#return_policy}}
-            <li>
+        <li class="desktop_only">
+            {{#return_policy}}
                 {{#lang}}Return Policy{{/lang}}
-            </li>
-        {{/return_policy}}
-        {{#terms}}
-            <li>
+            {{/return_policy}}
+        </li>
+        <li class="desktop_only">
+            {{#terms}}
                 {{#lang}}Terms &amp; Conditions{{/lang}}
-            </li>
-        {{/terms}}
+            {{/terms}}
+        </li>
         {{#store_email}}
             <li class="footer-contact">
                 Contact: <a href="mailto:{{store_email}}">{{#lang}}{{store_email}}{{/lang}}</a>
@@ -137,12 +161,20 @@ $('.tictail_variations_select').dropkick({
 var navigation = $('.navigation');
 $('.burger').click(function(e) {
     e.preventDefault();
-    if (navigation.hasClass('open')) {
-        navigation.removeClass('open');
-        $('body').removeClass('navigation-open');
+    if ($(window).width() < 575) {
+        if (navigation.is(':visible')) {
+            navigation.slideUp();
+        } else {
+            navigation.slideDown();
+        }
     } else {
-        navigation.addClass('open');
-        $('body').addClass('navigation-open');
+        if (navigation.hasClass('open')) {
+            navigation.removeClass('open');
+            $('body').removeClass('navigation-open');
+        } else {
+            navigation.addClass('open');
+            $('body').addClass('navigation-open');
+        }
     }
     return false;
 });
@@ -158,47 +190,50 @@ $('.search-icon').click(function(e) {
     return false;
 });
 
-if ($('#products').size() > 0) {
-    $(window).load(function() {
-        var totalWidth = 0;
-        $('.product_list li').each(function() {
-            totalWidth += $(this).width();
+if ($(window).width() > 575) {
+    if ($('#products').size() > 0) {
+        $(window).load(function() {
+            var totalWidth = 0;
+            $('.product_list li').each(function() {
+                totalWidth += $(this).width();
+            });
+            $('.product_list').width(totalWidth);
+            $('.content_container').width(totalWidth);
         });
-        $('.product_list').width(totalWidth);
-        $('.content_container').width(totalWidth);
+    }
+
+    if ($('#product').size() > 0) {
+        $(window).load(function() {
+            var totalWidth = 0,
+                productsImagesWidth = 0,
+                relatedProductsWidth = 0;
+
+            $('.product_images img').each(function() {
+                productsImagesWidth += $(this).outerWidth(true);
+            });
+
+            relatedProductsWidth += $('.related_products_title').outerWidth(true);
+            $('.product_list li').each(function() {
+                relatedProductsWidth += $(this).width();
+            });
+            $('.related_products').width(relatedProductsWidth);
+
+            totalWidth += $('.product_info').outerWidth(true);
+            totalWidth += productsImagesWidth;
+            totalWidth += relatedProductsWidth;
+            $('.content_container').width(totalWidth);
+        });
+    }
+
+    // http://adomas.org/javascript-mouse-wheel/
+    (function(e){function r(t){var n=t||window.event,r=[].slice.call(arguments,1),i=0,s=true,o=0,u=0;t=e.event.fix(n);t.type="mousewheel";if(n.wheelDelta){i=n.wheelDelta/120}if(n.detail){i=-n.detail/3}u=i;if(n.axis!==undefined&&n.axis===n.HORIZONTAL_AXIS){u=0;o=-1*i}if(n.wheelDeltaY!==undefined){u=n.wheelDeltaY/120}if(n.wheelDeltaX!==undefined){o=-1*n.wheelDeltaX/120}r.unshift(t,i,o,u);return(e.event.dispatch||e.event.handle).apply(this,r)}var t=["DOMMouseScroll","mousewheel"];if(e.event.fixHooks){for(var n=t.length;n;){e.event.fixHooks[t[--n]]=e.event.mouseHooks}}e.event.special.mousewheel={setup:function(){if(this.addEventListener){for(var e=t.length;e;){this.addEventListener(t[--e],r,false)}}else{this.onmousewheel=r}},teardown:function(){if(this.removeEventListener){for(var e=t.length;e;){this.removeEventListener(t[--e],r,false)}}else{this.onmousewheel=null}}};e.fn.extend({mousewheel:function(e){return e?this.bind("mousewheel",e):this.trigger("mousewheel")},unmousewheel:function(e){return this.unbind("mousewheel",e)}})})(jQuery)
+
+    $("body").mousewheel(function(event, delta) {
+        this.scrollLeft -= (delta * 30);
+        event.preventDefault();
     });
+
 }
-
-if ($('#product').size() > 0) {
-    $(window).load(function() {
-        var totalWidth = 0,
-            productsImagesWidth = 0,
-            relatedProductsWidth = 0;
-
-        $('.product_images img').each(function() {
-            productsImagesWidth += $(this).outerWidth(true);
-        });
-
-        relatedProductsWidth += $('.related_products_title').outerWidth(true);
-        $('.product_list li').each(function() {
-            relatedProductsWidth += $(this).width();
-        });
-        $('.related_products').width(relatedProductsWidth);
-
-        totalWidth += $('.product_info').outerWidth(true);
-        totalWidth += productsImagesWidth;
-        totalWidth += relatedProductsWidth;
-        $('.content_container').width(totalWidth);
-    });
-}
-
-// http://adomas.org/javascript-mouse-wheel/
-(function(e){function r(t){var n=t||window.event,r=[].slice.call(arguments,1),i=0,s=true,o=0,u=0;t=e.event.fix(n);t.type="mousewheel";if(n.wheelDelta){i=n.wheelDelta/120}if(n.detail){i=-n.detail/3}u=i;if(n.axis!==undefined&&n.axis===n.HORIZONTAL_AXIS){u=0;o=-1*i}if(n.wheelDeltaY!==undefined){u=n.wheelDeltaY/120}if(n.wheelDeltaX!==undefined){o=-1*n.wheelDeltaX/120}r.unshift(t,i,o,u);return(e.event.dispatch||e.event.handle).apply(this,r)}var t=["DOMMouseScroll","mousewheel"];if(e.event.fixHooks){for(var n=t.length;n;){e.event.fixHooks[t[--n]]=e.event.mouseHooks}}e.event.special.mousewheel={setup:function(){if(this.addEventListener){for(var e=t.length;e;){this.addEventListener(t[--e],r,false)}}else{this.onmousewheel=r}},teardown:function(){if(this.removeEventListener){for(var e=t.length;e;){this.removeEventListener(t[--e],r,false)}}else{this.onmousewheel=null}}};e.fn.extend({mousewheel:function(e){return e?this.bind("mousewheel",e):this.trigger("mousewheel")},unmousewheel:function(e){return this.unbind("mousewheel",e)}})})(jQuery)
-
-$("body").mousewheel(function(event, delta) {
-    this.scrollLeft -= (delta * 30);
-    event.preventDefault();
-});
 
 </script>
 
