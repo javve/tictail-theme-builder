@@ -92,7 +92,7 @@ b {
     font-weight: bold;
 }
 
-.content-container {
+.content_container {
     height: 500px;
     overflow: hidden;
 }

@@ -86,7 +86,7 @@
     </a>
 </div>
 
-<div class="content-container">
+<div class="content_container">
     {{{yield}}}
 </div>
 
@@ -165,6 +165,7 @@ if ($('#products').size() > 0) {
             totalWidth += $(this).width();
         });
         $('.product_list').width(totalWidth);
+        $('.content_container').width(totalWidth);
     });
 }
 
@@ -187,7 +188,7 @@ if ($('#product').size() > 0) {
         totalWidth += $('.product_info').outerWidth(true);
         totalWidth += productsImagesWidth;
         totalWidth += relatedProductsWidth;
-        $('.content-container').width(totalWidth);
+        $('.content_container').width(totalWidth);
     });
 }
 
