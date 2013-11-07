@@ -94,13 +94,10 @@
     </ul>
 </nav>
 
-<div class="logotype-container">
+<div class="logotype-container {{#logotype}}with_logotype{{/logotype}} {{#no_logotype}}without_logotype{{/no_logotype}}">
     <a class="logotype" href="{{store_url}}">
         {{#logotype}}
             <img src="{{url-300}}" alt="{{store_name}}">
-            <span class="store_name">
-                {{store_name}}
-            </span>
         {{/logotype}}
         {{#no_logotype}}
             <span class="store_name">

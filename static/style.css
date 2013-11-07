@@ -58,7 +58,7 @@ input, button, select {
 }
 
 a {
-    color: #222;
+    color: #545353;
     text-decoration: none;
     -webkit-transition: color 0.2s ease-in-out;
      -moz-transition: color 0.2s ease-in-out;
@@ -96,26 +96,6 @@ b {
     height: 500px;
     overflow: hidden;
 }
-@media only screen and (max-width: 1024px) {
-    .container {
-        margin-left:15px;
-        margin-right:15px;
-    }
-}
-
-
-hr {
-    height: 1px;
-    background-color: transparent;
-    border:none;
-    margin-top:30px;
-    margin-bottom:30px;
-    clear:both;
-}
-
-.force-show {
-    display:block !important;
-}
 
 
 /* ******************************
@@ -124,44 +104,23 @@ HEADER
 
 ****************************** */
 
-header {
-    margin: 0;
-    color:#999;
-    text-align: center;
-
-    /* Fix for Internet Explorer 7 */
-    position: relative;
-    z-index: 1;
-
-    /* Clearfix */
-    *zoom: 1;
-}
-
-header:before,
-header:after {
-    display: table;
-    content: "";
-}
-header:after {
-    clear: both;
-}
-
 .logotype {
-    font-size: 56px;
+    font-size: 5rem;
     display: inline-block;
+    text-transform: uppercase;
 }
 .logotype-container {
     text-align: center;
     padding-top:60px;
     margin-bottom:30px;
-    height:75px;
-    line-height:75px;
     position: fixed;
     top:0;
     width:100%;
 }
-
-.logotype .store_name {
+.logotype img {
+    max-width:100%;
+}
+.logotype.with_logotype .store_name {
     display:none;
 }
 .burger {
@@ -182,6 +141,12 @@ header:after {
     background-color: #3d3d3d;
     height: 4px;
     margin: 0 0 3px;
+}
+#tictail_search {
+    position: static;
+}
+#tictail_search_results {
+    top: 40px;
 }
 .search-box {
     position: fixed;
@@ -556,12 +521,12 @@ PRODUCT PAGE
         top:auto !important;
     }
     body {
-        padding-top:85px;
+        padding-top:80px;
         left:auto !important;
     }
     .burger,
     .search-box {
-        top: 45px;
+        top: 40px;
         position: absolute;
     }
     .burger {
@@ -570,6 +535,10 @@ PRODUCT PAGE
     .search-box {
         left:40px !important;
     }
+    #tictail_search_results{
+
+    }
+
     .navigation {
         width:100%;
         display:none;
@@ -584,9 +553,12 @@ PRODUCT PAGE
     .navigation ul.mobile-only {
         border-top:solid 1px #646464;
     }
+    .logotype {
+        font-size: 3rem;
+    }
     .logotype-container {
-        padding-top: 0;
-        margin-bottom:10px;
+        margin-bottom:0;
+        padding:10px 0;
     }
     .content_container {
         height: auto;
@@ -619,9 +591,10 @@ PRODUCT PAGE
     }
     .product_list li {
         float:none;
+        margin-bottom:5px;
     }
     .product_list li a {
-        margin:0 0 5px;
+        margin:0;
     }
     .product_list .image_container img {
         height:auto;
