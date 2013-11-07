@@ -196,6 +196,7 @@ if ($(window).width() > 575) {
             });
             $('.product_list').width(totalWidth);
             $('.content_container').width(totalWidth);
+            $('body').width(totalWidth+30);
         });
     }
 
@@ -213,23 +214,29 @@ if ($(window).width() > 575) {
             $('.product_list li').each(function() {
                 relatedProductsWidth += $(this).width();
             });
-            $('.related_products').width(relatedProductsWidth);
+            $('.related_products').width(relatedProductsWidth+30);
 
             totalWidth += $('.product_info').outerWidth(true);
             totalWidth += productsImagesWidth;
             totalWidth += relatedProductsWidth;
-            $('.content_container').width(totalWidth);
+            $('.content_container').width(totalWidth+30);
+            $('body').width(totalWidth+30);
         });
     }
 
     // http://adomas.org/javascript-mouse-wheel/
     (function(e){function r(t){var n=t||window.event,r=[].slice.call(arguments,1),i=0,s=true,o=0,u=0;t=e.event.fix(n);t.type="mousewheel";if(n.wheelDelta){i=n.wheelDelta/120}if(n.detail){i=-n.detail/3}u=i;if(n.axis!==undefined&&n.axis===n.HORIZONTAL_AXIS){u=0;o=-1*i}if(n.wheelDeltaY!==undefined){u=n.wheelDeltaY/120}if(n.wheelDeltaX!==undefined){o=-1*n.wheelDeltaX/120}r.unshift(t,i,o,u);return(e.event.dispatch||e.event.handle).apply(this,r)}var t=["DOMMouseScroll","mousewheel"];if(e.event.fixHooks){for(var n=t.length;n;){e.event.fixHooks[t[--n]]=e.event.mouseHooks}}e.event.special.mousewheel={setup:function(){if(this.addEventListener){for(var e=t.length;e;){this.addEventListener(t[--e],r,false)}}else{this.onmousewheel=r}},teardown:function(){if(this.removeEventListener){for(var e=t.length;e;){this.removeEventListener(t[--e],r,false)}}else{this.onmousewheel=null}}};e.fn.extend({mousewheel:function(e){return e?this.bind("mousewheel",e):this.trigger("mousewheel")},unmousewheel:function(e){return this.unbind("mousewheel",e)}})})(jQuery)
 
-    $("body").mousewheel(function(event, delta) {
+    $("html, body, *").mousewheel(function(event, delta) {
         this.scrollLeft -= (delta * 30);
         event.preventDefault();
     });
 
+    function setBodySize() {
+        $('body').height($('html').height() - 20 - parseInt($('body').css('padding-top'), 10));
+    }
+    $(window).resize(setBodySize);
+    setBodySize();
 }
 
 </script>
