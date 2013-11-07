@@ -49,6 +49,9 @@ class App
       def logotype
         @store["logotype"]
       end
+      def no_logotype
+        false
+      end
 
       ######################################
       # Navigation
