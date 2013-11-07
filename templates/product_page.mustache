@@ -48,15 +48,15 @@
                     <img src="{{url-500}}" />
                 {{/all_images}}
             </section>
-        </div>
         {{/product}}
 
         {{! Render a list of related products if there are any }}
-        {{#related_products?}}
-        <aside id="related_products">
-            <hr>
+        {{!#related_products?}}
+        <aside id="related_products" class="related_products">
 
-            <h2 class="might-like">{{#lang}}You might also like...{{/lang}}</h2>
+            <div class="related_products_title">
+                <h2>{{#lang}}Related products{{/lang}}</h2>
+            </div>
 
             <ul class="product_list">
                 {{#related_products}}
@@ -81,7 +81,7 @@
                 {{/related_products}}
             </ul>
         </aside>
-        {{/related_products?}}
+        {{!/related_products?}}
     </article>
 
 {{/product_page}}

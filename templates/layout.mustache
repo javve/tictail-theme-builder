@@ -170,19 +170,23 @@ if ($('#products').size() > 0) {
 
 if ($('#product').size() > 0) {
     $(window).load(function() {
-        var totalWidth = 0;
-        var productsWidth = 0;
-        totalWidth += $('.product_info').outerWidth(true);
+        var totalWidth = 0,
+            productsImagesWidth = 0,
+            relatedProductsWidth = 0;
 
         $('.product_images img').each(function() {
-            productsWidth += $(this).outerWidth(true);
+            productsImagesWidth += $(this).outerWidth(true);
         });
-        totalWidth += productsWidth;
 
+        relatedProductsWidth += $('.related_products_title').outerWidth(true);
         $('.product_list li').each(function() {
-            totalWidth += $(this).width();
+            relatedProductsWidth += $(this).width();
         });
+        $('.related_products').width(relatedProductsWidth);
 
+        totalWidth += $('.product_info').outerWidth(true);
+        totalWidth += productsImagesWidth;
+        totalWidth += relatedProductsWidth;
         $('.content-container').width(totalWidth);
     });
 }
