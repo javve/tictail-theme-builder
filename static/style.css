@@ -541,6 +541,7 @@ PRODUCT PAGE
 
     .navigation {
         width:100%;
+        height:auto;
         display:none;
         -webkit-transition: max-height 0.2s ease-in-out;
          -moz-transition: max-height 0.2s ease-in-out;
