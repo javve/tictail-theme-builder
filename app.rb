@@ -35,6 +35,7 @@ class App < Sinatra::Base
     json = File.read("store.json").force_encoding('UTF-8')
     @store = JSON.parse(json)
     @product = @store["products"].select { |q| q["url"] == "/product/"+params[:permalink] }[0]
+    @related_products = @store["products"].sample(5)
     mustache :product_page
   end
 

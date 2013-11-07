@@ -49,6 +49,10 @@ class App
           html
         end
       end
+
+      def related_products
+        @related_products
+      end
     end
   end
 end
