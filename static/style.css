@@ -116,9 +116,10 @@ header:after {
     display: inline-block;
     margin-top: 30px;
     margin-bottom: 30px;
+    font-weight: bold;
 }
 
-.logotype .store_name {
+.logotype.with_logotype .store_name {
     display:none;
 }
 .burger {
@@ -273,7 +274,8 @@ header:after {
     .logotype img {
         display:none;
     }
-    .logotype .store_name {
+    .logotype .store_name,
+    .logotype.with_logotype .store_name {
         display:inline;
     }
     .full_navigation {

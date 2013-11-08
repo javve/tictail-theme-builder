@@ -30,7 +30,7 @@
 
 <header class="container">
 
-    <a class="logotype" href="{{store_url}}">
+    <a class="logotype {{#logotype}}with_logotype{{/logotype}}{{#no_logotype}}without_logotype{{/no_logotype}}" href="{{store_url}}">
         {{#logotype}}
             <img src="{{url-300}}" alt="{{store_name}}">
             <span class="store_name">
