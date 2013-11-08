@@ -296,6 +296,7 @@ header:after {
     }
     .sub_navigation {
         border-top:solid 1px #fff;
+        margin-bottom:40px;
     }
     .main_navigation > ul > li,
     .sub_navigation > ul > li {
@@ -317,11 +318,13 @@ header:after {
 
     .main_navigation > ul > li.selected > a,
     .sub_navigation  > ul > li.selected > a {
-        color: #222;
         font-weight: bold;
         -webkit-box-shadow: inset 4px 0 0 #00afd1;
            -moz-box-shadow: inset 4px 0 0 #00afd1;
                 box-shadow: inset 4px 0 0 #00afd1;
+    }
+    .main_navigation > ul > li.selected > a {
+        color: #fff;
     }
 
     .burger {
