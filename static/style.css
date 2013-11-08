@@ -328,19 +328,19 @@ header:after {
         display: block;
         float: none;
         height: 30px;
-        width: 30px;
+        width: 25px;
         position: absolute;
         bottom:2px;
         right:16px;
     }
     .burger .line {
         display: block;
-        background-color: #bbb;
-        height: 4px;
-        margin: 3px 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        background-color: #eee;
+        height: 3px;
+        margin: 4px 0;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
     }
 
     #tictail_search_results {
