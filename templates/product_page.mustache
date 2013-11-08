@@ -14,11 +14,7 @@
                 <div class="inner_container">
                     <h1 itemprop="name">{{title}}</h1>
 
-                    <div class="description html_content" itemprop="description">
-                        {{{description}}}
-                    </div>
-
-                    <div style="display:none;" class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         <span itemprop="price">{{{price_with_currency}}}</span>
 
                         {{! This is meta data for search engines etc. }}
@@ -29,6 +25,10 @@
                         {{#out_of_stock}}
                         <link itemprop="availability" href="http://schema.org/OutOfStock">
                         {{/out_of_stock}}
+                    </div>
+
+                    <div class="description html_content" itemprop="description">
+                        {{{description}}}
                     </div>
 
                     {{! The #add_to_cart block is only rendered if the product is in stock }}

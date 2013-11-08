@@ -690,7 +690,12 @@ PRODUCT PAGE
     width:20%;
     text-align: center;
 }
+.product_info h1 {
+    margin-bottom:3px;
+}
 .product_info .price {
+    color:#222;
+    font-weight: bold;
 }
 
 .product_info .description {
