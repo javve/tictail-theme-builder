@@ -12,6 +12,7 @@ body {
     padding: 0;
     background-color:#f7f5ef;
     font-family: Abel, Arial, sans-serif;
+    font-size: 13px;
     font-size: 1.3rem;
     line-height: 1.3;
     color: #626262;
@@ -73,7 +74,9 @@ a:hover {
 
 h1 {
     color:#515151;
+    margin: 0 0 16px;
     margin: 0 0 1.6rem;
+    font-size: 30px;
     font-size: 3rem;
     font-weight: normal;
     line-height:1.1;
@@ -107,6 +110,7 @@ HEADER
 ****************************** */
 
 .logotype {
+    font-size: 50px;
     font-size: 5rem;
     display: inline-block;
     text-transform: uppercase;
@@ -174,6 +178,7 @@ HEADER
     background-color:#e6e1d7;
 }
 .search-box .icon-search {
+    font-size:22px;
     font-size:2.2rem;
     line-height: 40px;
     color:#3d3d3d;
@@ -200,13 +205,16 @@ HEADER
     border: none;
     line-height: 40px;
     height: 40px;
+    padding:0 15px;
     padding:0 1.5rem;
     font: normal 1.6rem Abel, arial, sans-serif;
 }
 
 .navigation {
+    letter-spacing: 0.5px;
     letter-spacing: 0.05rem;
     background-color:#3d3d3d;
+    font-size:18px;
     font-size:1.8rem;
     height:100%;
     width:220px;
@@ -230,12 +238,15 @@ HEADER
     border-bottom:solid 1px #fff;
 }
 .navigation > ul {
+    padding:10px 0;
     padding:1rem 0;
+    margin:0 20px;
     margin:0 2rem;
 }
 
 .navigation li {
     margin: 0;
+    padding:5px 0;
     padding:0.5rem 0;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -245,6 +256,7 @@ HEADER
 }
 
 .sub_navigation {
+    padding:5px 0 0 10px;
     padding:0.5rem 0 0 1rem;
     text-transform: none;
 }
@@ -252,16 +264,10 @@ HEADER
     color:#cdcdcd;
 }
 .sub_navigation li {
+    padding:3px 0;
     padding:0.3rem 0;
 }
 
-
-@media only screen and (max-width: 1024px) {
-
-}
-@media only screen and (max-width: 575px) {
-
-}
 
 /* ******************************
 
@@ -274,6 +280,7 @@ footer {
     width:100%;
     margin:30px 0;
     padding-left:30px;
+    font-size: 16px;
     font-size: 1.6rem;
     text-transform: uppercase;
     position: fixed;
@@ -352,6 +359,7 @@ LIST PAGE
 }
 .product_list a:hover .info {
     opacity: 1;
+    display:block;
 }
 .product_list .info {
     position: absolute;
@@ -359,6 +367,8 @@ LIST PAGE
     left:0;
     width:100%;
     height:100%;
+
+    background-color:#f70100;
     background-color:rgba(247, 1, 0, 0.7);
     text-align: center;
     opacity: 0;
@@ -366,6 +376,8 @@ LIST PAGE
      -moz-transition: opacity 0.3s ease-in-out;
        -o-transition: opacity 0.3s ease-in-out;
           transition: opacity 0.3s ease-in-out;
+
+    display/*\**/: none\9;
 }
 .product_list .info-line {
     width:30px;
@@ -377,13 +389,16 @@ LIST PAGE
 
 .product_list h2,
 .product_list h3 {
+    margin: 200px 0 0;
     margin: 20rem 0 0;
+    font-size: 30px;
     font-size: 3rem;
     font-weight: normal;
     color:#fff;
 }
 
 .product_list .price {
+    font-size:20px;
     font-size:2rem;
     font-weight: normal;
     color:#fff;
@@ -542,6 +557,7 @@ PRODUCT PAGE
         height:300px;
     }
     .product_list h2, .product_list h3 {
+        margin: 100px 0 0;
         margin: 10rem 0 0;
     }
     .about_page .store_description {
@@ -603,12 +619,14 @@ PRODUCT PAGE
               transition: max-height 0.2s ease-in-out;
     }
     .navigation ul {
+        margin:0 10px;
         margin:0 1rem;
     }
     .navigation ul.mobile-only {
         border-top:solid 1px #646464;
     }
     .logotype {
+        font-size: 30px;
         font-size: 3rem;
     }
     .logotype-container {
@@ -657,6 +675,7 @@ PRODUCT PAGE
     }
     .product_list h2,
     .product_list h3 {
+        margin: 30px 0 0;
         margin: 3rem 0 0;
     }
 
