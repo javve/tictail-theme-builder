@@ -26,8 +26,7 @@
     <script src="{{assets_url}}/shared/js/html5shiv.js"></script>
     <![endif]-->
 </head>
-<body>
-
+<body class="{{#navigation}}{{#is_current}}{{#has_children}}navigation-open{{/has_children}}{{/is_current}}{{/navigation}}">
 
 <a href="#" class="burger">
     <span class="line"></span>
@@ -40,7 +39,7 @@
     {{{search}}}
 </div>
 
-<nav class="navigation">
+<nav class="navigation{{#navigation}}{{#is_current}}{{#has_children}} open{{/has_children}}{{/is_current}}{{/navigation}}">
     <ul>
         <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
             <a href="{{store_url}}">
@@ -97,7 +96,7 @@
 <div class="logotype-container {{#logotype}}with_logotype{{/logotype}} {{#no_logotype}}without_logotype{{/no_logotype}}">
     <a class="logotype" href="{{store_url}}">
         {{#logotype}}
-            <img src="{{url-300}}" alt="{{store_name}}">
+            <img src="{{url-500}}" alt="{{store_name}}">
         {{/logotype}}
         {{#no_logotype}}
             <span class="store_name">
@@ -187,40 +186,56 @@ $('.search-icon').click(function(e) {
     return false;
 });
 
+var setProductListWidth = function() {
+    var totalWidth = 0;
+    $('.product_list li').each(function() {
+        totalWidth += $(this).width();
+    });
+    $('.product_list').width(totalWidth);
+    $('.content_container').width(totalWidth);
+    $('body').width(totalWidth+30);
+};
+
+var setProductPageWidth = function() {
+    var totalWidth = 0,
+        productsImagesWidth = 0,
+        relatedProductsWidth = 0;
+
+    $('.product_images img').each(function() {
+        productsImagesWidth += $(this).outerWidth(true);
+    });
+
+    relatedProductsWidth += $('.related_products_title').outerWidth(true);
+    $('.product_list li').each(function() {
+        relatedProductsWidth += $(this).width();
+    });
+    $('.related_products').width(relatedProductsWidth+30);
+
+    totalWidth += $('.product_info').outerWidth(true);
+    totalWidth += productsImagesWidth;
+    totalWidth += relatedProductsWidth;
+    $('.content_container').width(totalWidth+30);
+    $('body').width(totalWidth+30);
+};
+
+var calculateProductPageColumns = function() {
+    var columns = 1;
+    console.log($('.product_info').height(), $('.content_container').height());
+    while ($('.product_info').height() > $('.content_container').height() && columns < 5) {
+        columns++;
+        $('.product_info').addClass('column'+columns);
+    }
+};
+
 if ($(window).width() > 575) {
     if ($('#products').size() > 0) {
-        $(window).load(function() {
-            var totalWidth = 0;
-            $('.product_list li').each(function() {
-                totalWidth += $(this).width();
-            });
-            $('.product_list').width(totalWidth);
-            $('.content_container').width(totalWidth);
-            $('body').width(totalWidth+30);
-        });
+        $(window).load(setProductListWidth);
     }
 
     if ($('#product').size() > 0) {
         $(window).load(function() {
-            var totalWidth = 0,
-                productsImagesWidth = 0,
-                relatedProductsWidth = 0;
-
-            $('.product_images img').each(function() {
-                productsImagesWidth += $(this).outerWidth(true);
-            });
-
-            relatedProductsWidth += $('.related_products_title').outerWidth(true);
-            $('.product_list li').each(function() {
-                relatedProductsWidth += $(this).width();
-            });
-            $('.related_products').width(relatedProductsWidth+30);
-
-            totalWidth += $('.product_info').outerWidth(true);
-            totalWidth += productsImagesWidth;
-            totalWidth += relatedProductsWidth;
-            $('.content_container').width(totalWidth+30);
-            $('body').width(totalWidth+30);
+            calculateProductPageColumns();
+            setProductPageWidth();
         });
     }
 

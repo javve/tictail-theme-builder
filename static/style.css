@@ -73,9 +73,10 @@ a:hover {
 
 h1 {
     color:#515151;
-    margin: 0 0 12px;
+    margin: 0 0 1.6rem;
     font-size: 3rem;
     font-weight: normal;
+    line-height:1.1;
 }
 
 h2 {
@@ -119,6 +120,7 @@ HEADER
     width:100%;
 }
 .logotype img {
+    max-height:75px;
     max-width:100%;
 }
 .logotype.with_logotype .store_name {
@@ -131,7 +133,7 @@ HEADER
     position: fixed;
     top:10px;
     left:20px;
-    padding:10px 10px 7px;
+    padding:11px 10px 8px;
 }
 .burger:hover,
 .navigation-open .burger {
@@ -178,15 +180,21 @@ HEADER
     display:block;
 }
 .search-box .tictail_search {
-    display:none;
+    overflow:hidden;
+    width:0;
+    float:left;
+    margin-left:-2px;
+    -webkit-transition: width 0.2s ease-in-out;
+     -moz-transition: width 0.2s ease-in-out;
+       -o-transition: width 0.2s ease-in-out;
+          transition: width 0.2s ease-in-out;
 }
 .search-box.open .search-icon {
     background-color:#e6e1d7;
 }
 .search-box.open .tictail_search {
-    margin-left:-2px;
     display:block;
-    float:left;
+    width:250px;
 }
 .search-box .tictail_search_box {
     border: none;
@@ -298,6 +306,7 @@ ABOUT PAGE
     margin-left:30px;
 }
 .about_page .store_description {
+    height:400px;
     font-family: Arvo, arial, sans-serif;
     -webkit-column-width:260px;
     -webkitcolumn-gap:20px;
@@ -396,6 +405,24 @@ PRODUCT PAGE
     width:280px;
     margin:0 30px;
 }
+.product_info .description {
+    -webkit-column-width:280px;
+    -webkitcolumn-gap:20px;
+    -moz-column-width:280px;
+    -moz-column-gap:20px;
+    column-width:280px;
+    column-gap:20px;
+}
+.product_info.column2 {
+    width:580px;
+}
+.product_info.column3 {
+    width:880px;
+}
+.product_info.column4 {
+    width:1180px;
+}
+
 
 .add_to_cart {
     float:left;
@@ -406,7 +433,7 @@ PRODUCT PAGE
     font-size: 20px;
     text-transform: uppercase;
     line-height: 30px;
-    padding:0 20px;
+    padding:0 10px;
     margin:0;
     background-color:#3d3d3d;
     display:block;
@@ -439,7 +466,7 @@ PRODUCT PAGE
     font-size: 20px;
     text-transform: uppercase;
     line-height: 30px;
-    padding:0 20px;
+    padding:0 10px;
     background-color:#e6e1d7;
     display:block;
     float:left;
@@ -449,6 +476,7 @@ PRODUCT PAGE
     clear:left;
     padding-top:20px;
     font-family: Arvo, arial, sans-serif;
+    line-height:1.35;
 }
 
 .product_info .description a {
@@ -506,6 +534,28 @@ PRODUCT PAGE
     display:none;
 }
 
+@media only screen and (max-height: 710px) {
+    .content_container {
+        height:300px;
+    }
+    .product_list .image_container img {
+        height:300px;
+    }
+    .product_list h2, .product_list h3 {
+        margin: 10rem 0 0;
+    }
+    .about_page .store_description {
+        height:200px;
+    }
+    .product_images img {
+        height:300px;
+    }
+    .related_products .related_products_title {
+        height:300px;
+    }
+}
+
+
 @media only screen and (max-width: 575px) {
 
     .mobile-only {
@@ -535,6 +585,9 @@ PRODUCT PAGE
     }
     .search-box {
         left:40px !important;
+    }
+    .navigation-open .burger {
+        background-color:transparent;
     }
     #tictail_search_results{
 
