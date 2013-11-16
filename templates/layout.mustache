@@ -189,10 +189,10 @@ $('.search-icon').click(function(e) {
 var setProductListWidth = function() {
     var totalWidth = 0;
     $('.product_list li').each(function() {
-        totalWidth += $(this).width();
+        totalWidth += $(this).outerWidth();
     });
     $('.product_list').width(totalWidth);
-    $('.content_container').width(totalWidth);
+    $('.content_container').width($('.product_list').outerWidth(true));
     $('body').width(totalWidth+30);
 };
 
