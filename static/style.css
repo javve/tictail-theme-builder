@@ -40,6 +40,9 @@ footer,
        -o-transition: left 0.2s ease-in-out;
           transition: left 0.2s ease-in-out;
 }
+.tictail_fullscreen {
+    position: fixed;
+}
 
 .logotype-container {
     z-index:1;
