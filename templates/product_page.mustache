@@ -2,7 +2,7 @@
     <article id="product" itemscope itemtype="http://schema.org/Product">
         {{#product}}
             {{#primary_image}}
-                <img src="{{url-500}}" class="mobile-only product_image_primary" />
+                <a href="{{url-1000}}" class="product_image_primary_link"><img src="{{url-500}}" class="mobile-only product_image_primary" /></a>
             {{/primary_image}}
             <section id="product_info" class="product_info">
                 <h1 itemprop="name">{{title}}</h1>
@@ -50,7 +50,7 @@
 
             <section class="product_images">
                 {{#all_images}}
-                    <img src="{{url-500}}" {{#is_primary}}class="product_images_primary"{{/is_primary}} />
+                    <a href="{{url-1000}}"><img src="{{url-500}}" {{#is_primary}}class="product_images_primary"{{/is_primary}} /></a>
                 {{/all_images}}
             </section>
         {{/product}}
