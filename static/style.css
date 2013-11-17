@@ -703,7 +703,7 @@ PRODUCT PAGE
         width:100%;
         margin:0 0 5px;
     }
-    .product_images img.product_image_primary {
+    .product_images .product_images_primary {
         display:none;
     }
     .related_products {
