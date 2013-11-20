@@ -118,6 +118,9 @@ header:after {
     margin-bottom: 30px;
     font-weight: bold;
 }
+.logotype img {
+    margin-bottom:-15px;
+}
 
 .logotype.with_logotype .store_name {
     display:none;
