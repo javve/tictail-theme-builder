@@ -205,7 +205,7 @@ HEADER
 }
 .search-box.open .tictail_search {
     display:block;
-    width:250px;
+    width: 264px;
 }
 .search-box .tictail_search_box {
     border: none;
@@ -214,6 +214,7 @@ HEADER
     padding:0 15px;
     padding:0 1.5rem;
     font: normal 1.6rem Abel, arial, sans-serif;
+    width:234px;
 }
 
 .navigation {
@@ -613,7 +614,13 @@ PRODUCT PAGE
         background-color:transparent;
     }
     #tictail_search_results{
-
+        width:246px;
+    }
+    .search-box.open .tictail_search {
+        width: 210px;
+    }
+    .search-box .tictail_search_box {
+        width:180px;
     }
 
     .navigation {
