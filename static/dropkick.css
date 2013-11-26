@@ -152,7 +152,7 @@ DROPKICK STYLES
 }
 
 .dk_fouc select {
-    position: relative;
+    position: absolute;
     top: -99999em;
     visibility: hidden;
 }

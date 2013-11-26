@@ -714,7 +714,10 @@ PRODUCT PAGE
     color: #ccc;
     text-decoration: underline;
 }
-
+.product_info .dk_container,
+.product_info .tictail_variations_select {
+    margin-bottom:7px;
+}
 .product_info .variations_container .dk_toggle .dk_label {
     display: inline;
     width: auto;
