@@ -18,23 +18,17 @@ body {
     color: #626262;
     position:relative;
 }
-body.navigation-open,
-body.navigation-open footer,
-body.navigation-open .logotype-container {
-    left:220px;
+body.navigation-open {
+    margin-left:220px;
 }
 body.navigation-open .content_container_inner {
     padding-right: 220px;
 }
-body,
-.burger,
-.search-box,
-footer,
-.logotype-container {
-    -webkit-transition: left 0.2s ease-in-out;
-     -moz-transition: left 0.2s ease-in-out;
-       -o-transition: left 0.2s ease-in-out;
-          transition: left 0.2s ease-in-out;
+body {
+    -webkit-transition: margin-left 0.2s ease-in-out;
+     -moz-transition: margin-left 0.2s ease-in-out;
+       -o-transition: margin-left 0.2s ease-in-out;
+          transition: margin-left 0.2s ease-in-out;
 }
 .tictail_fullscreen {
     position: fixed;
@@ -231,13 +225,6 @@ HEADER
      -moz-transition: left 0.2s ease-in-out;
        -o-transition: left 0.2s ease-in-out;
           transition: left 0.2s ease-in-out;
-}
-.navigation.open {
-    /*left:0;*/
-}
-.navigation.open:hover {
-    /*position:absolute;
-    margin-left:-220px;*/
 }
 .navigation a {
     color:#fff;
