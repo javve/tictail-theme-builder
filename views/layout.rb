@@ -47,10 +47,10 @@ class App
       end
 
       def logotype
-        @store["logotype"]
+        false # @store["logotype"]
       end
       def no_logotype
-        false
+        true
       end
 
       ######################################
