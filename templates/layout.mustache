@@ -28,17 +28,6 @@
 </head>
 <body class="{{#navigation}}{{#is_current}}{{#has_children}}navigation-open{{/has_children}}{{/is_current}}{{/navigation}}">
 
-<a href="#" class="burger">
-    <span class="line"></span>
-    <span class="line"></span>
-    <span class="line"></span>
-</a>
-
-<div class="search-box">
-    <a href="#" class="search-icon">Search</a>
-    {{{search}}}
-</div>
-
 <nav class="navigation{{#navigation}}{{#is_current}}{{#has_children}} open{{/has_children}}{{/is_current}}{{/navigation}}">
     <ul>
         <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
@@ -46,6 +35,106 @@
                 {{#lang}}All items{{/lang}}
             </a>
         </li>
+        {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
+            {{#is_current}}
+                {{#has_children}}
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
+                {{/has_children}}
+            {{/is_current}}
+        </li>
+        {{/navigation}}
+        {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
+            {{#is_current}}
+                {{#has_children}}
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
+                {{/has_children}}
+            {{/is_current}}
+        </li>
+        {{/navigation}}
+        {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
+            {{#is_current}}
+                {{#has_children}}
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
+                {{/has_children}}
+            {{/is_current}}
+        </li>
+        {{/navigation}}
+        {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
+            {{#is_current}}
+                {{#has_children}}
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
+                {{/has_children}}
+            {{/is_current}}
+        </li>
+        {{/navigation}}
+        {{#navigation}}
+        <li class="navigation_item {{#is_current}}selected{{/is_current}}">
+            <a href="{{url}}">
+                {{label}}
+            </a>
+            {{#is_current}}
+                {{#has_children}}
+                    <ul class="sub_navigation">
+                        {{#children}}
+                            <li {{#is_current}} class="selected"{{/is_current}}>
+                                <a href="{{url}}">
+                                    {{label}}
+                                </a>
+                            </li>
+                        {{/children}}
+                    </ul>
+                {{/has_children}}
+            {{/is_current}}
+        </li>
+        {{/navigation}}
         {{#navigation}}
         <li class="navigation_item {{#is_current}}selected{{/is_current}}">
             <a href="{{url}}">
@@ -93,56 +182,70 @@
     </ul>
 </nav>
 
-<div class="logotype-container {{#logotype}}with_logotype{{/logotype}} {{#no_logotype}}without_logotype{{/no_logotype}}">
-    <a class="logotype" href="{{store_url}}">
-        {{#logotype}}
-            <img src="{{url-500}}" alt="{{store_name}}">
-        {{/logotype}}
-        {{#no_logotype}}
-            <span class="store_name">
-                {{store_name}}
-            </span>
-        {{/no_logotype}}
+<div class="page">
+
+    <div class="logotype-container {{#logotype}}with_logotype{{/logotype}} {{#no_logotype}}without_logotype{{/no_logotype}}">
+        <a class="logotype" href="{{store_url}}">
+            {{#logotype}}
+                <img src="{{url-500}}" alt="{{store_name}}">
+            {{/logotype}}
+            {{#no_logotype}}
+                <span class="store_name">
+                    {{store_name}}
+                </span>
+            {{/no_logotype}}
+        </a>
+    </div>
+
+    <a href="#" class="burger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
     </a>
-</div>
 
-<div class="content_container">
-    {{{yield}}}
-</div>
+    <div class="search-box">
+        <a href="#" class="search-icon">Search</a>
+        {{{search}}}
+    </div>
 
-<footer>
-    <ul>
-        <li id="about_link" class="desktop_only {{#about_page}}selected{{/about_page}}">
-            <a href="{{store_url}}/about">
-                {{#lang}}About{{/lang}}
-            </a>
-        </li>
-        {{#store_blog_url}}
-        <li id="blog_link" class="desktop_only store_link">
-            <a href="{{store_blog_url}}" target="_blank">
-                {{#lang}}Blog{{/lang}}
-            </a>
-        </li>
-        {{/store_blog_url}}
-        <li class="desktop_only">
-            {{#return_policy}}
-                {{#lang}}Return Policy{{/lang}}
-            {{/return_policy}}
-        </li>
-        <li class="desktop_only">
-            {{#terms}}
-                {{#lang}}Terms &amp; Conditions{{/lang}}
-            {{/terms}}
-        </li>
-        {{#store_email}}
-            <li class="footer-contact">
-                Contact: <a href="mailto:{{store_email}}">{{#lang}}{{store_email}}{{/lang}}</a>
+    <div class="content_container">
+        <div class="content_container_inner">
+            {{{yield}}}
+        </div>
+    </div>
+
+    <footer>
+        <ul>
+            <li id="about_link" class="desktop_only {{#about_page}}selected{{/about_page}}">
+                <a href="{{store_url}}/about">
+                    {{#lang}}About{{/lang}}
+                </a>
             </li>
-        {{/store_email}}
-    </ul>
-</footer>
-
+            {{#store_blog_url}}
+            <li id="blog_link" class="desktop_only store_link">
+                <a href="{{store_blog_url}}" target="_blank">
+                    {{#lang}}Blog{{/lang}}
+                </a>
+            </li>
+            {{/store_blog_url}}
+            <li class="desktop_only">
+                {{#return_policy}}
+                    {{#lang}}Return Policy{{/lang}}
+                {{/return_policy}}
+            </li>
+            <li class="desktop_only">
+                {{#terms}}
+                    {{#lang}}Terms &amp; Conditions{{/lang}}
+                {{/terms}}
+            </li>
+            {{#store_email}}
+                <li class="footer-contact">
                     {{#lang}}Contact{{/lang}}: <a href="mailto:{{store_email}}">{{store_email}}</a>
+                </li>
+            {{/store_email}}
+        </ul>
+    </footer>
+</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="{{assets_url}}/shared/js/jquery.dropkick-1.3.3-min.js"></script>
@@ -195,9 +298,9 @@ var setProductListWidth = function() {
     $('.product_list li').each(function() {
         totalWidth += $(this).outerWidth();
     });
-    $('.product_list').width(totalWidth);
-    $('.content_container').width($('.product_list').outerWidth(true));
-    $('body').width(totalWidth+30);
+    $('.content_container_inner').width(totalWidth);
+    //$('.content_container_inner').width($('.product_list').outerWidth(true));
+    //$('body').width(totalWidth+30);
 };
 
 var setProductPageWidth = function() {
@@ -218,13 +321,13 @@ var setProductPageWidth = function() {
     totalWidth += $('.product_info').outerWidth(true);
     totalWidth += productsImagesWidth;
     totalWidth += relatedProductsWidth;
-    $('.content_container').width(totalWidth+40);
-    $('body').width(totalWidth+30);
+    $('.content_container_inner').width(totalWidth+40);
+    //$('body').width(totalWidth+30);
 };
 
 var calculateProductPageColumns = function() {
     var columns = 1;
-    while ($('.product_info').height() > $('.content_container').height() && columns < 5) {
+    while ($('.product_info').height() > $('.content_container_inner').height() && columns < 5) {
         columns++;
         $('.product_info').addClass('column'+columns);
     }
@@ -242,17 +345,26 @@ var initLightbox = function() {
         }
     });
 };
-
+var i = 0;
 if ($(window).width() > 575) {
     // http://adomas.org/javascript-mouse-wheel/
     (function(e){function r(t){var n=t||window.event,r=[].slice.call(arguments,1),i=0,s=true,o=0,u=0;t=e.event.fix(n);t.type="mousewheel";if(n.wheelDelta){i=n.wheelDelta/120}if(n.detail){i=-n.detail/3}u=i;if(n.axis!==undefined&&n.axis===n.HORIZONTAL_AXIS){u=0;o=-1*i}if(n.wheelDeltaY!==undefined){u=n.wheelDeltaY/120}if(n.wheelDeltaX!==undefined){o=-1*n.wheelDeltaX/120}r.unshift(t,i,o,u);return(e.event.dispatch||e.event.handle).apply(this,r)}var t=["DOMMouseScroll","mousewheel"];if(e.event.fixHooks){for(var n=t.length;n;){e.event.fixHooks[t[--n]]=e.event.mouseHooks}}e.event.special.mousewheel={setup:function(){if(this.addEventListener){for(var e=t.length;e;){this.addEventListener(t[--e],r,false)}}else{this.onmousewheel=r}},teardown:function(){if(this.removeEventListener){for(var e=t.length;e;){this.removeEventListener(t[--e],r,false)}}else{this.onmousewheel=null}}};e.fn.extend({mousewheel:function(e){return e?this.bind("mousewheel",e):this.trigger("mousewheel")},unmousewheel:function(e){return this.unbind("mousewheel",e)}})})(jQuery)
 
-    $("html, body, *").mousewheel(function(event, delta) {
-        this.scrollLeft -= (delta * 30);
-        event.preventDefault();
+    var wait = false;
+    $("html, body, *").mousewheel(function(e, delta) {
+        if (!wait) {
+            var target = e.target || e.srcElement;
+            if (!$(target).closest('.navigation').size()) {
+                $('.content_container')[0].scrollLeft -= (delta * 30);
+                e.preventDefault();
+            }
+            wait = true;
+            setTimeout(function() { wait = false}, 5);
+        }
     });
 
     function adjustSizes() {
+        $('.page').width($(window).width());
         if ($('#products').size() > 0) {
             setProductListWidth();
         }
@@ -278,6 +390,8 @@ $(document).ready(initLightbox());
 </html>
 
 <!--
+Designed by Mia Nilsson and developed by Jonny Strömberg twitter.com/javve
+
 Want to create your own Tictail theme?
 Check out the documentation at https://tictail.com/docs
 -->
