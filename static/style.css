@@ -355,12 +355,11 @@ LIST PAGE
 
 ****************************** */
 
-.product_list {
-    margin: 0 0 0 30px;
-}
-
 .product_list li {
     float:left;
+}
+.product_list li:first-child {
+    margin-left:30px;
 }
 
 .product_list a {
@@ -661,6 +660,9 @@ PRODUCT PAGE
     .content_container {
         height: auto;
         overflow: visible;
+    }
+    .page {
+        position: static;
     }
 
     footer {}
