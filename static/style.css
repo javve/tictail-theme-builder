@@ -30,6 +30,9 @@ body.navigation-open .logotype-container {
 .navigation-open .burger {
     left:240px;
 }
+body.navigation-open .content_container_inner {
+    padding-right: 220px;
+}
 body,
 .burger,
 .search-box,
@@ -598,6 +601,10 @@ PRODUCT PAGE
     .desktop_only {
         display:none;
     }
+    .page, .content_container_inner {
+        position: static;
+        width:auto !important;
+    }
     .navigation,
     footer,
     .logotype-container {
@@ -622,6 +629,9 @@ PRODUCT PAGE
     }
     .navigation-open .burger {
         background-color:transparent;
+    }
+    .navigation-open .content_container_inner {
+        padding-right:0;
     }
     #tictail_search_results{
         width:246px;
@@ -657,12 +667,10 @@ PRODUCT PAGE
         margin-bottom:0;
         padding:10px 0;
     }
-    .content_container {
+    .content_container,
+    .content_container_inner {
         height: auto;
         overflow: visible;
-    }
-    .page {
-        position: static;
     }
 
     footer {}
@@ -693,6 +701,9 @@ PRODUCT PAGE
     .product_list li {
         float:none;
         margin-bottom:5px;
+    }
+    .product_list li:first-child {
+        margin-left:0;
     }
     .product_list li a {
         margin:0;
