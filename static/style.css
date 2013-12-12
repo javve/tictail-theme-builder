@@ -654,6 +654,7 @@ only screen and (                min-resolution: 2dppx) {
         width:100%;
         height:auto;
         display:none;
+        min-height:0;
         -webkit-transition: max-height 0.2s ease-in-out;
          -moz-transition: max-height 0.2s ease-in-out;
            -o-transition: max-height 0.2s ease-in-out;
