@@ -230,14 +230,14 @@ var set = {
     horizontalScroll: function() {
         var wait = false;
         $("html, body, *").mousewheel(function(e, delta) {
-            if (!wait && device === "desktop") {
-                var target = e.target || e.srcElement;
-                if (!$(target).closest('.navigation').size()) {
+            var target = e.target || e.srcElement;
+            if ($(target).closest('.navigation').size() == 0) {
+                e.preventDefault();
+                if (!wait && device === "desktop") {
                     $('.content_container')[0].scrollLeft -= (delta * 30);
-                    e.preventDefault();
+                    wait = true;
+                    setTimeout(function() { wait = false}, 5);
                 }
-                wait = true;
-                setTimeout(function() { wait = false}, 5);
             }
         });
     },
