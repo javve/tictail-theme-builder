@@ -253,8 +253,6 @@ var set = {
             totalWidth += $(this).outerWidth(true);
         });
         $('.content_container_inner').width(totalWidth);
-        //$('.content_container_inner').width($('.product_list').outerWidth(true));
-        //$('body').width(totalWidth+30);
     },
     productPageWidth: function() {
         var totalWidth = 0,
@@ -275,7 +273,6 @@ var set = {
         totalWidth += productsImagesWidth;
         totalWidth += relatedProductsWidth;
         $('.content_container_inner').width(totalWidth+40);
-        //$('body').width(totalWidth+30);
     },
     productPageColumns: function() {
         var columns = 1;
