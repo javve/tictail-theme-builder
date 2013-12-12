@@ -555,7 +555,8 @@ PRODUCT PAGE
     height:300px;
 }
 @media only screen and (min-height: 710px) {
-    .content_container {
+    .content_container,
+    .content_container_inner {
         height:500px;
     }
     .product_list .image_container img {
