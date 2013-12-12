@@ -188,6 +188,9 @@ var init = {
         }
     },
     desktop: function() {
+        if (device !== "desktop") {
+            init.reset();
+        }
         device = "desktop";
         set.bodyHeight();
         set.pageWidth();
@@ -200,7 +203,20 @@ var init = {
         }
     },
     mobile: function() {
+        if (device !== "mobile") {
+            init.reset();
+        }
         device = "mobile";
+    },
+    reset: function() {
+        var navigation = $('.navigation');
+        if (device == "desktop") {
+            navigation.removeClass('open');
+            $('body').removeClass('navigation-open');
+            navigation.hide();
+        } else {
+            navigation.slideUp();
+        }
     }
 };
 
