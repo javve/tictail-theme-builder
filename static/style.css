@@ -312,6 +312,10 @@ ABOUT PAGE
     column-width:260px;
     column-gap:20px;
 }
+.about_page .store_description a {
+     word-break: break-all;
+}
+
 
 
 @media only screen and (max-width: 1024px) {
@@ -405,6 +409,9 @@ PRODUCT PAGE
     float:left;
     width:280px;
     margin:0 30px;
+}
+.product_info a {
+    word-break: break-all;
 }
 .product_info .description {
     -webkit-column-width:280px;
