@@ -229,8 +229,8 @@ var set = {
         $("html, body, *").mousewheel(function(e, delta) {
             var target = e.target || e.srcElement;
             if ($(target).closest('.navigation').size() == 0) {
-                e.preventDefault();
                 if (!wait && device === "desktop") {
+                    e.preventDefault();
                     $('.content_container')[0].scrollLeft -= (delta * 30);
                     wait = true;
                     setTimeout(function() { wait = false}, 5);
