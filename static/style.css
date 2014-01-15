@@ -113,8 +113,8 @@ HEADER
 }
 .logotype-container {
     text-align: center;
-    padding-top:60px;
-    margin-bottom:30px;
+    margin-top:60px;
+    padding-bottom:30px;
     top:0;
     width:100%;
 }
@@ -679,7 +679,7 @@ only screen and (                min-resolution: 2dppx) {
         font-size: 3rem;
     }
     .logotype-container {
-        margin-bottom:0;
+        margin:0 !important;
         padding:10px 0;
     }
     .content_container,

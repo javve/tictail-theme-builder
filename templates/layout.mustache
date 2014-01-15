@@ -197,6 +197,7 @@ var init = {
             set.productPageColumns();
             set.productPageWidth();
         }
+        set.verticalAlign();
     },
     mobile: function() {
         if (device !== "mobile") {
@@ -309,6 +310,13 @@ var set = {
             }
             return false;
         });
+    },
+    verticalAlign: function() {
+        var contentHeight = $('.content_container').height(),
+            windowHeight = $(window).height(),
+            marginTop = windowHeight/2 - contentHeight/2 - $('.logotype-container').outerHeight();
+
+        $('.logotype-container').css('margin-top', marginTop+'px');
     }
 };
 
