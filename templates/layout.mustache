@@ -27,9 +27,9 @@
     <script src="{{assets_url}}/shared/js/html5shiv.js"></script>
     <![endif]-->
 </head>
-<body class="{{#navigation}}{{#is_current}}{{#has_children}}navigation-open{{/has_children}}{{/is_current}}{{/navigation}}">
+<body>
 
-<nav class="navigation{{#navigation}}{{#is_current}}{{#has_children}} open{{/has_children}}{{/is_current}}{{/navigation}}">
+<nav class="navigation">
     <ul>
         <li class="navigation_item {{#list_page}}{{#no_current_navigation}}selected{{/no_current_navigation}}{{/list_page}}">
             <a href="{{store_url}}">
@@ -212,6 +212,8 @@ var init = {
             $('body').removeClass('navigation-open');
             navigation.hide();
         } else {
+            navigation.removeClass('open');
+            $('body').removeClass('navigation-open');
             navigation.slideUp();
         }
     }
