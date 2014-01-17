@@ -177,7 +177,7 @@ var init = {
         $('.burger').click(set.burger);
     },
     restart: function() {
-        if ($(window).width() > 575) {
+        if (is.desktop()) {
             init.desktop();
         } else {
             init.mobile();
@@ -216,6 +216,15 @@ var init = {
         }
     }
 };
+
+var is = {
+    desktop: function() {
+        return ($(window).width() > 575);
+    },
+    mobile: function() {
+        return ($(window).width() <= 575);
+    }
+}
 
 var set = {
     lightbox: function() {
@@ -312,6 +321,9 @@ var set = {
         });
     },
     verticalAlign: function() {
+        if (is.mobile()) {
+            return;
+        }
         var contentHeight = $('.content_container').height(),
             windowHeight = $(window).height(),
             marginTop = windowHeight/2 - contentHeight/2 - $('.logotype-container').outerHeight();
@@ -320,7 +332,7 @@ var set = {
     }
 };
 
-
+set.verticalAlign();
 $(window).resize(init.restart);
 $(window).load(init.start);
 
