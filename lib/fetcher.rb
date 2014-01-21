@@ -124,18 +124,22 @@ class Fetcher
       product = fix_stock(product)
       product["price_with_currency"] = product["price"].split(".")[0] + " <span class='currency currency_sek'>"+ @store["currency"] + "</span>"
 
-      product["primary_image"]["sizes"].each do |key, value|
-        name = "url-" << key
-        product["primary_image"][name] = value
-      end
-      product["primary_image"].delete("sizes")
-
-      product["all_images"].each do |image|
-        image["sizes"].each do |key, value|
+      if product.has_key?("primary_image")
+        product["primary_image"]["sizes"].each do |key, value|
           name = "url-" << key
-          image[name] = value
+          product["primary_image"][name] = value
         end
-        image.delete("sizes")
+        product["primary_image"].delete("sizes")
+      end
+      
+      unless product["all_images"].nil?
+        product["all_images"].each do |image|
+          image["sizes"].each do |key, value|
+            name = "url-" << key
+            image[name] = value
+          end
+          image.delete("sizes")
+        end
       end
     end
     products
