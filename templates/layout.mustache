@@ -168,7 +168,8 @@ $('.tictail_variations_select').dropkick({
 <script>
 
 
-var device;
+var device,
+    scroll = null;
 
 var init = {
     start: function() {
@@ -177,8 +178,14 @@ var init = {
         } else {
             init.mobile();
         }
+        if (document.addEventListener) {
+            document.addEventListener('touchmove', function (e) {
+                if (scroll) {
+                    e.preventDefault();
+                }
+            }, false);
+        }
         set.lightbox();
-        set.horizontalScroll();
         set.search();
         $('.burger').click(set.burger);
     },
@@ -194,6 +201,7 @@ var init = {
             init.reset();
         }
         device = "desktop";
+        set.horizontalScroll();
         set.bodyHeight();
         set.pageWidth();
         if ($('#products').size() > 0) {
@@ -204,6 +212,7 @@ var init = {
             set.productPageWidth();
         }
         set.placeFooter();
+        scroll.refresh();
     },
     mobile: function() {
         if (device !== "mobile") {
@@ -214,6 +223,8 @@ var init = {
     reset: function() {
         var navigation = $('.navigation');
         if (device == "desktop") {
+            scroll.destroy();
+            scroll = null;
             navigation.removeClass('open');
             $('body').removeClass('navigation-open');
             navigation.hide();
@@ -242,7 +253,7 @@ var set = {
         });
     },
     horizontalScroll: function() {
-        if ($("html, body, *").mousewheel) {
+        if ($("html, body, *").mousewheel) { // IE
             var wait = false;
             $("html, body, *").mousewheel(function(e, delta) {
                 var target = e.target || e.srcElement;
@@ -256,8 +267,9 @@ var set = {
                 }
             });
         } else {
-            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-            new IScroll('.content_container', { scrollX: true, scrollY: false, mouseWheel: true });
+            if (device === "desktop" && scroll == null) {
+                scroll = new IScroll('.content_container', { scrollX: true, scrollY: false, mouseWheel: true });
+            }
         }
     },
     bodyHeight: function() {
