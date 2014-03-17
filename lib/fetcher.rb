@@ -53,7 +53,7 @@ class Fetcher
   end
 
   def get_store_id(page)
-    page.body.scan(/"id": (\d*), "vat_number"/)[0][0]
+    get_store_data(page)["id"]
   end
 
   def get_store_data(page)
@@ -116,9 +116,9 @@ class Fetcher
   end
 
   def products
-    products = @api.get_full('{"jsonrpc":"2.0","method":"store.product.search","params":{"store_id":' + store_id + ',"published":false,"limit":17,"offset":0,"order_by":"position","descending":false},"id":null}')
+    products = @api.get_full('{"jsonrpc":"2.0","method":"store.product.search","params":{"store_id":' + store_id.to_s + ',"published":false,"limit":17,"offset":0,"order_by":"position","descending":false},"id":null}')
     products.each do |product|
-      product_extra = @api.get_full('{"jsonrpc":"2.0","method":"store.product.get","params":{"store_id":' + store_id + ',"slug":"'+ product["url"][9,1000] +'","published":false},"id":null}')
+      product_extra = @api.get_full('{"jsonrpc":"2.0","method":"store.product.get","params":{"store_id":' + store_id.to_s + ',"slug":"'+ product["url"][9,1000] +'","published":false},"id":null}')
       product["all_images"] = product_extra["images"]
 
       product = fix_stock(product)
