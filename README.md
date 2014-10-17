@@ -1,4 +1,4 @@
-# The unoffical Tictail Theme Builder for local developmet
+# The unofficial Tictail Theme Builder for local developmet
 
 We all love Tictail, right? But the ones of us how've built a store theme
 knows that using the online editor sometimes could be a bit limiting. I'm
