@@ -1,6 +1,6 @@
 # The unofficial Tictail Theme Builder for local developmet
 
-We all love Tictail, right? But the ones of us how've built a store theme
+We all love Tictail, right? But the ones of us who've built a store theme
 knows that using the online editor sometimes could be a bit limiting. I'm
 pretty sure that their team is working hard on solving this problem. But in
 the meantime, maybe this project can help.
@@ -49,9 +49,10 @@ templates, etc.
 
 3. Fetch your Tictail store data into `store.json` by this command:
   ```
-  $ ruby lib/fetcher.rb <email> <password>
-  
-  # ex: ruby lib/fetcher javve@coolemail.com supersecret
+  $ ruby lib/fetcher.rb <email> <password> <storename>
+
+  # ex: ruby lib/fetcher javve@coolemail.com supersecret mysuperawesomestore
+  # storename is optional and if used should be written lowercased without spaces
   ```
 
 4. Spin up a server with [Rack](http://rack.rubyforge.org/doc/).
@@ -75,7 +76,7 @@ templates, etc.
 I've implemented many (the ones I needed for my own template), but not all of the tags in the [Tictail documentation](https://tictail.com/docs/templates).
 Feel free to contribute.
 
-As stated above, this is an unofficial project. I can't say how long it will work or promis that it'll stay
+As stated above, this is an unofficial project. I can't say how long it will work or promise that it'll stay
 up to date with Tictail.
 
 All backend code is really, really ugly. Yes, I mean, really ugly. But it get's the job done, hehe ;)
@@ -83,7 +84,7 @@ All backend code is really, really ugly. Yes, I mean, really ugly. But it get's 
 ### Things that differ in the local development vs Tictail.com
 These are converted by `lib/printer.rb`.
 ```
-{{search}} --> {{{serach}}}
+{{search}} --> {{{search}}}
 {{social_buttons}} --> {{{social_buttons}}}
 {{price_with_currency}} --> {{{price_with_currency}}}
 {{children?}}{{/children}} --> {{#has_children?}}{{/has_children}}
