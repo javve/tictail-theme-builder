@@ -7,15 +7,16 @@ require 'json'
 require 'stringex'
 require './lib/tictail_api'
 
-if (ARGV.length != 2)
-  puts "Script usage: ruby lib/fetcer.rb <tictail-email> <tictail-password>"
+if (ARGV.length > 3 || ARGV.length < 2)
+  puts "Script usage: ruby lib/fetcer.rb <tictail-email> <tictail-password> <tictail-storename>"
+  puts "<tictail-storename> is optional and if used should be written lowercased without spaces, like mysuperawesomestore"
   exit
 end
 
 class Fetcher
   attr_accessor :store_id, :agent, :api, :store, :logo, :description, :navigation, :original_navigation
 
-  def initialize(email, password)
+  def initialize(email, password, storeName={})
     @agent = Mechanize.new
 
     page = sign_in(email, password)
@@ -23,8 +24,8 @@ class Fetcher
       puts "Error. Could not log in. Wrong email or password? <3"
       exit
     end
-    @store_id = get_store_id(page)
-    @store = get_store_data(page)
+    @store_id = get_store_id(page, storeName)
+    @store = get_store_data(page, storeName)
 
     @api = Tictail_api.new(@agent, @store_id)
 
@@ -52,14 +53,24 @@ class Fetcher
     @agent.submit(sign_in_form, sign_in_form.buttons.first)
   end
 
-  def get_store_id(page)
-    get_store_data(page)["id"]
+  def get_store_id(page, storeName)
+    get_store_data(page, storeName)["id"]
   end
 
-  def get_store_data(page)
-    store = page.body.scan(/var ClientSession = (.*);\n/)[0][0]
-    store = JSON.parse(store)
-    store = store["storekeeper"]["stores"].first[1]
+  def get_store_data(page, storeName)
+    login = Hash.new
+    stores = page.body.scan(/var ClientSession = (.*);\n/)[0][0]
+    stores = JSON.parse(stores)
+    stores = stores["storekeeper"]["stores"]
+
+    login["stores"] = stores
+
+    if storeName.nil?
+      store = stores.first[1]
+    else
+      store = login["stores"][storeName]
+    end
+
     store["url"] = "/"
     store
   end
@@ -164,4 +175,4 @@ class Fetcher
   end
 end
 
-Fetcher.new(ARGV[0], ARGV[1])
+Fetcher.new(ARGV[0], ARGV[1], ARGV[2])
