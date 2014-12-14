@@ -49,9 +49,10 @@ templates, etc.
 
 3. Fetch your Tictail store data into `store.json` by this command:
   ```
-  $ ruby lib/fetcher.rb <email> <password>
-  
-  # ex: ruby lib/fetcher javve@coolemail.com supersecret
+  $ ruby lib/fetcher.rb <email> <password> <storename>
+
+  # ex: ruby lib/fetcher javve@coolemail.com supersecret mysuperawesomestore
+  # storename is optional and if used should be written lowercased without spaces
   ```
 
 4. Spin up a server with [Rack](http://rack.rubyforge.org/doc/).
