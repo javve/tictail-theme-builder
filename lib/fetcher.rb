@@ -77,12 +77,14 @@ class Fetcher
 
   def logo
     logo = @api.get("store.media.logotype.get")["logotype"]
-    logo["sizes"].each do |key, value|
-      name = "url-" << key
-      logo[name] = value
+    if logo
+      logo["sizes"].each do |key, value|
+        name = "url-" << key
+        logo[name] = value
+      end
+      logo.delete("sizes")
+      logo
     end
-    logo.delete("sizes")
-    logo
   end
 
   def description
